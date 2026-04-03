@@ -2,42 +2,117 @@
 <html>
 <head>
   <title>Engineering Hub</title>
+
   <style>
     body {
-      font-family: Arial;
-      margin: 40px;
-      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(135deg, #0b0b0b, #1a1a1a);
+      color: #f5f5f5;
     }
+
     h1 {
-      color: #333;
+      text-align: center;
+      padding: 30px 20px 10px;
+      color: #ffffff;
+      letter-spacing: 2px;
     }
+
+    p {
+      text-align: center;
+      color: #c9c9c9;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      background: rgba(20, 20, 20, 0.95);
+      border: 1px solid #2a2a2a;
+      border-left: 5px solid #8b0000;
+      margin: 20px auto;
+      padding: 20px;
+      width: 85%;
+      max-width: 900px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.6);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(139, 0, 0, 0.4);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #d4af37;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 8px;
+    }
+
     a {
       display: block;
-      margin: 10px 0;
-      font-size: 18px;
+      padding: 10px;
+      margin: 8px 0;
+      text-decoration: none;
+      color: #f5f5f5;
+      background: #151515;
+      border: 1px solid #2d2d2d;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      background: #8b0000;
+      color: #ffffff;
+      border-color: #d4af37;
+      transform: translateX(5px);
+    }
+
+    .footer {
+      text-align: center;
+      color: #777;
+      font-size: 12px;
+      padding: 30px;
     }
   </style>
 </head>
+
 <body>
+
   <h1>BEHS Engineering Pathway Hub</h1>
-  <p>Course Hubs</p>
-  <a href="courses/ied.html">Engineering 1 - Introduction to Engineering</a>
-  <a href="courses/poe.html">Engineering 2 - Principles of Engineering</a>
-  <a href="courses/de.html">Engineering 3 - Digital Electronics</a>
+  <p>Systems • Design • Innovation</p>
 
-  <p>BEHS Robotics</p>
-  <a href="robotics/robotics.html">BEHS Robotics</a>
+  <div class="section">
+    <h2>Course Hubs</h2>
+    <a href="courses/ied.html">Engineering 1 - Introduction to Engineering</a>
+    <a href="courses/poe.html">Engineering 2 - Principles of Engineering</a>
+    <a href="courses/de.html">Engineering 3 - Digital Electronics</a>
+  </div>
 
-  <p>Additional Resources</p>
-  <a href="pltwarticleresources/pltwarticleresources.html">PLTW Article Resources</a>
-  <a href="freqdocuments/freqdocuments.html">Frequently Used Documents</a>
-  <a href="programsused/programsused.html">Programs Used</a>
-  <a href="trainingsandcerts/trainingsandcerts.html">Trainings and Certifications</a>
-  <a href="gamesandmore/gamesandmore.html">Games & More</a>
+  <div class="section">
+    <h2>BEHS Robotics</h2>
+    <a href="robotics/robotics.html">Robotics Hub</a>
+  </div>
 
-  <p>Engineering Pathway News</p>
-  <a href="gallary/gallary.html">Gallary</a>
-  <a href="newsletter/newsletter.html">Monthly Newsletter</a>
-  
+  <div class="section">
+    <h2>Additional Resources</h2>
+    <a href="pltwarticleresources/pltwarticleresources.html">PLTW Article Resources</a>
+    <a href="freqdocuments/freqdocuments.html">Frequently Used Documents</a>
+    <a href="programsused/programsused.html">Programs Used</a>
+    <a href="trainingsandcerts/trainingsandcerts.html">Trainings and Certifications</a>
+    <a href="gamesandmore/gamesandmore.html">Games & More</a>
+  </div>
+
+  <div class="section">
+    <h2>Engineering Pathway News</h2>
+    <a href="gallery/gallery.html">Gallery</a>
+    <a href="newsletter/newsletter.html">Monthly Newsletter</a>
+  </div>
+
+  <div class="footer">
+    BEHS Engineering Hub • Built for exploration and creation
+  </div>
+
 </body>
 </html>
