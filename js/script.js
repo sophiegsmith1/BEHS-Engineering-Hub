@@ -28,3 +28,17 @@
       link.parentElement.style.display = "block";
     }
   });
+
+
+  if (window.location.pathname.includes("/courses/") ||
+      window.location.pathname.includes("/resources/") ||
+      window.location.pathname.includes("/news/") ||
+      window.location.pathname.includes("/robotics/")) {
+    path = "../components/sidebar.html";
+  }
+
+  const response = await fetch(path);
+  const html = await response.text();
+
+  container.innerHTML = html;
+  }
