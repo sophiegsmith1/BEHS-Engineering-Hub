@@ -6,10 +6,13 @@ async function loadSidebar() {
   if (!container) return;
 
   try {
-    const res = await fetch("./components/sidebar.html");
+    // ALWAYS load from site root
+    const path = "/components/sidebar.html";
+
+    const res = await fetch(path);
 
     if (!res.ok) {
-      throw new Error(`Failed to load sidebar: ${res.status}`);
+      throw new Error(`Sidebar failed to load: ${res.status}`);
     }
 
     const html = await res.text();
