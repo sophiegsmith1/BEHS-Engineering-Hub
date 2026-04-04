@@ -108,24 +108,6 @@ function initResponsive() {
 
 window.addEventListener("resize", initResponsive);
 
-document.addEventListener("click", function (e) {
-
-  // UNIT toggle
-  if (e.target.classList.contains("unit-btn")) {
-    const content = e.target.nextElementSibling;
-    content.style.display =
-      content.style.display === "block" ? "none" : "block";
-  }
-
-  // LESSON toggle
-  if (e.target.classList.contains("lesson-btn")) {
-    const content = e.target.nextElementSibling;
-    content.style.display =
-      content.style.display === "block" ? "none" : "block";
-  }
-
-});
-
 // ===============================
 // INIT
 // ===============================
