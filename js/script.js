@@ -12,32 +12,25 @@ async function loadSidebar() {
 
   try {
     const res = await fetch(`${BASE}/components/sidebar.html`);
-
-    if (!res.ok) {
-      throw new Error(`Sidebar failed: ${res.status}`);
-    }
+    if (!res.ok) throw new Error(`Sidebar failed: ${res.status}`);
 
     const html = await res.text();
     container.innerHTML = html;
 
-    // Initialize AFTER sidebar exists
     initSidebar();
     initToggle();
-    initResponsive();
-
+    initResponsive(); // Initial check
   } catch (err) {
     console.error(err);
-    container.innerHTML =
-      "<p style='color:red;'>Sidebar failed to load</p>";
+    container.innerHTML = "<p style='color:red;'>Sidebar failed to load</p>";
   }
 }
 
 // ===============================
-// SIDEBAR DROPDOWNS + SEARCH + ACTIVE LINK
+// SIDEBAR LOGIC
 // ===============================
 function initSidebar() {
-
-  // dropdowns
+  // Dropdowns
   document.querySelectorAll(".menu-title").forEach(title => {
     title.addEventListener("click", () => {
       const submenu = title.nextElementSibling;
@@ -45,70 +38,75 @@ function initSidebar() {
     });
   });
 
-  // search
+  // Improved Search
   window.searchMenu = function (query) {
-    const links = document.querySelectorAll(".submenu a");
+    const lowQuery = query.toLowerCase();
+    const submenus = document.querySelectorAll(".submenu");
 
-    links.forEach(link => {
-      const text = link.textContent.toLowerCase();
-      link.style.display =
-        text.includes(query.toLowerCase()) ? "block" : "none";
+    submenus.forEach(submenu => {
+      const links = submenu.querySelectorAll("a");
+      let hasMatch = false;
+
+      links.forEach(link => {
+        const text = link.textContent.toLowerCase();
+        const isMatch = text.includes(lowQuery);
+        link.style.display = isMatch ? "block" : "none";
+        if (isMatch) hasMatch = true;
+      });
+
+      // Auto-open submenu if searching and a match is found
+      if (lowQuery !== "") {
+        submenu.classList.toggle("open", hasMatch);
+        submenu.previousElementSibling.style.display = hasMatch ? "block" : "none";
+      } else {
+        // Reset to default (closed) when search is cleared
+        submenu.classList.remove("open");
+        submenu.previousElementSibling.style.display = "block";
+      }
     });
   };
 
-  // active link highlight
-  const current = window.location.pathname;
-
+  // Active Link Highlight
+  const currentPath = window.location.pathname;
   document.querySelectorAll(".submenu a").forEach(link => {
     const href = link.getAttribute("href");
-
-    if (current.includes(href)) {
+    if (currentPath.endsWith(href) || currentPath === href) {
       link.classList.add("active");
       link.parentElement.classList.add("open");
     }
   });
 }
 
-// ===============================
-// TOGGLE SIDEBAR (FIXED)
-// ===============================
 function initToggle() {
   const btn = document.getElementById("menu-toggle");
-
   if (!btn) return;
 
   btn.addEventListener("click", () => {
     const sidebar = document.getElementById("sidebar");
     const main = document.querySelector(".main");
-
-    if (!sidebar || !main) return;
-
     sidebar.classList.toggle("closed");
     main.classList.toggle("expanded");
   });
 }
 
-// ===============================
-// RESPONSIVE BEHAVIOR
-// ===============================
+// Optimized Responsive Logic
+let lastWidth = window.innerWidth;
 function initResponsive() {
   const sidebar = document.getElementById("sidebar");
   const main = document.querySelector(".main");
-
   if (!sidebar || !main) return;
 
-  if (window.innerWidth <= 768) {
+  const currentWidth = window.innerWidth;
+  // Only trigger logic if crossing the mobile/desktop threshold
+  if (lastWidth > 768 && currentWidth <= 768) {
     sidebar.classList.add("closed");
     main.classList.add("expanded");
-  } else {
+  } else if (lastWidth <= 768 && currentWidth > 768) {
     sidebar.classList.remove("closed");
     main.classList.remove("expanded");
   }
+  lastWidth = currentWidth;
 }
 
 window.addEventListener("resize", initResponsive);
-
-// ===============================
-// INIT
-// ===============================
 document.addEventListener("DOMContentLoaded", loadSidebar);
