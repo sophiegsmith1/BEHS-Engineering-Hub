@@ -1,5 +1,5 @@
 // ===============================
-// SIDEBAR LOADER (GITHUB SAFE)
+// SIDEBAR LOADER
 // ===============================
 async function loadSidebar() {
   const container = document.getElementById("sidebar-container");
