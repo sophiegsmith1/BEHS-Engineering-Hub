@@ -1,186 +1,193 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Orbitron:wght@400;600&display=swap');
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Rajdhani:wght@300;400;600&display=swap');
 
-/* ===============================
-   GLOBAL FOUNDATION
-=============================== */
+/* Root Theme Variables */
+:root {
+    --bg: #0b0f14;
+    --panel: #111823;
+    --panel-2: #0f141d;
+
+    --red: #d10000;
+    --gold: #d4af37;
+    --grey: #8a8f98;
+    --white: #f5f7fa;
+
+    --glow-red: rgba(209, 0, 0, 0.35);
+    --glow-gold: rgba(212, 175, 55, 0.25);
+
+    --radius: 14px;
+}
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-  margin: 0;
-  font-family: "Inter", sans-serif;
-  background: #0b0b0b;
-  color: #f5f5f5;
+    font-family: 'Rajdhani', sans-serif;
+    background: radial-gradient(circle at top, #121a26, var(--bg));
+    color: var(--white);
+    overflow-x: hidden;
 }
 
-/* prevents flash on load system */
-body.loading {
-  visibility: hidden;
+/* Headings */
+h1, h2, h3 {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 1px;
+    color: var(--white);
 }
 
-/* ===============================
-   SIDEBAR CORE
-=============================== */
+/* Links */
+a {
+    color: var(--gold);
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+a:hover {
+    color: var(--red);
+    text-shadow: 0 0 8px var(--glow-red);
+}
+
+/* =========================
+   SIDEBAR
+   ========================= */
+
 .sidebar {
-  width: 260px;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-
-  background: linear-gradient(180deg, #0d0d0d, #111111);
-  border-right: 2px solid #8b0000;
-
-  padding: 20px 14px;
-  overflow-y: auto;
-
-  transform: translateX(0);
-  transition: transform 0.3s ease;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 100vh;
+    background: linear-gradient(180deg, var(--panel), var(--panel-2));
+    border-right: 1px solid rgba(212, 175, 55, 0.15);
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    padding: 20px;
+    transition: transform 0.3s ease;
+    z-index: 1000;
 }
 
-/* sidebar hidden state */
+/* Collapsed state (JS toggles this class) */
 .sidebar.closed {
-  transform: translateX(-100%);
-}
-
-/* ===============================
-   SIDEBAR TITLE
-=============================== */
-.sidebar h2 {
-  font-family: "Orbitron", sans-serif;
-  font-size: 18px;
-  color: #d4af37;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
-}
-
-/* ===============================
-   MENU TITLES
-=============================== */
-.menu-title {
-  color: #ffffff;
-  font-weight: 600;
-
-  padding: 10px;
-  margin-top: 10px;
-
-  background: rgba(139, 0, 0, 0.15);
-  border-left: 3px solid #8b0000;
-
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.menu-title:hover {
-  background: rgba(212, 175, 55, 0.12);
-  border-left: 3px solid #d4af37;
-  transform: translateX(2px);
-}
-
-/* ===============================
-   SUBMENU LINKS
-=============================== */
-.submenu a {
-  display: block;
-  padding: 8px 10px;
-  margin: 4px 0;
-
-  color: #cccccc;
-  text-decoration: none;
-
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-.submenu a:hover {
-  background: rgba(139, 0, 0, 0.25);
-  color: #ffffff;
-  transform: translateX(4px);
-}
-
-.submenu a.active {
-  background: rgba(212, 175, 55, 0.2);
-  color: #d4af37;
-  font-weight: 600;
-}
-
-/* submenu animation */
-.submenu {
-  display: none;
-  padding-left: 8px;
-}
-
-.submenu.open {
-  display: block;
-}
-
-/* ===============================
-   MAIN CONTENT AREA
-=============================== */
-.main {
-  margin-left: 260px;
-  padding: 24px;
-
-  min-height: 100vh;
-
-  background: radial-gradient(circle at top, #1a1a1a, #0b0b0b);
-
-  transition: margin-left 0.3s ease;
-}
-
-/* expanded state when sidebar closed */
-.main.expanded {
-  margin-left: 0;
-}
-
-/* ===============================
-   TOGGLE BUTTON
-=============================== */
-.menu-toggle {
-  position: fixed;
-  top: 14px;
-  left: 14px;
-  z-index: 9999;
-
-  background: linear-gradient(135deg, #8b0000, #d4af37);
-  color: white;
-
-  padding: 10px 12px;
-  border-radius: 10px;
-
-  cursor: pointer;
-
-  box-shadow: 0 0 12px rgba(139, 0, 0, 0.4);
-  transition: transform 0.2s ease;
-}
-
-.menu-toggle:hover {
-  transform: scale(1.08);
-}
-
-/* ===============================
-   MOBILE BEHAVIOR
-=============================== */
-@media (max-width: 768px) {
-  .main {
-    margin-left: 0;
-  }
-
-  .sidebar {
     transform: translateX(-100%);
-  }
-
-  .sidebar:not(.closed) {
-    transform: translateX(0);
-  }
 }
 
-/* ===============================
-   OPTIONAL POLISH LAYER
-=============================== */
-h1, h2 {
-  text-shadow: 0 0 10px rgba(212, 175, 55, 0.15);
+/* Sidebar links */
+.sidebar a {
+    display: block;
+    padding: 10px 12px;
+    margin: 6px 0;
+    border-radius: var(--radius);
+    color: var(--white);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.2s ease;
 }
 
-/* smooth scrolling feel */
-html {
-  scroll-behavior: smooth;
+.sidebar a:hover {
+    background: rgba(209, 0, 0, 0.15);
+    border-color: var(--red);
+    box-shadow: 0 0 10px var(--glow-red);
+    transform: translateX(4px);
+}
+
+/* Toggle button */
+.sidebar-toggle {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: var(--panel);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    color: var(--gold);
+    font-size: 22px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1100;
+    transition: 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+    box-shadow: 0 0 12px var(--glow-gold);
+}
+
+/* =========================
+   MAIN CONTENT
+   ========================= */
+
+.main-content {
+    margin-left: 260px;
+    padding: 30px;
+    transition: margin-left 0.3s ease;
+}
+
+/* When sidebar closes */
+.sidebar.closed ~ .main-content {
+    margin-left: 0;
+}
+
+/* =========================
+   CARDS (Home Page)
+   ========================= */
+
+.card {
+    background: linear-gradient(145deg, var(--panel), var(--panel-2));
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin: 15px 0;
+    transition: 0.25s ease;
+    box-shadow: 0 0 0 transparent;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4), 0 0 12px var(--glow-gold);
+    border-color: var(--gold);
+}
+
+/* Card titles */
+.card h3 {
+    color: var(--gold);
+}
+
+/* =========================
+   BUTTONS
+   ========================= */
+
+button {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(90deg, var(--red), #7a0000);
+    color: var(--white);
+    border: none;
+    padding: 10px 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+button:hover {
+    box-shadow: 0 0 12px var(--glow-red);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+   ========================= */
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
 }
