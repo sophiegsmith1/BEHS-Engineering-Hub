@@ -3,6 +3,8 @@
 <head>
   <title>Engineering Hub</title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
     body {
       margin: 0;
@@ -10,6 +12,20 @@
       background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
       color: #f5f5f5;
       display: flex;
+    }
+
+    /* MOBILE TOGGLE */
+    .menu-toggle {
+      display: none;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      background: #8b0000;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 1000;
     }
 
     /* SIDEBAR */
@@ -21,36 +37,43 @@
       padding-top: 20px;
       position: fixed;
       overflow-y: auto;
+      transition: 0.3s;
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-100%);
     }
 
     .sidebar h2 {
       text-align: center;
       color: #d4af37;
-      margin-bottom: 20px;
     }
 
-    .menu-section {
-      margin-bottom: 10px;
+    /* SEARCH */
+    .search {
+      margin: 15px;
+      padding: 8px;
+      width: 80%;
+      border-radius: 5px;
+      border: none;
+      background: #222;
+      color: white;
     }
 
     .menu-title {
       padding: 12px 20px;
       cursor: pointer;
-      color: #ccc;
       font-weight: bold;
-      border-left: 4px solid transparent;
-      transition: 0.2s;
+      color: #ccc;
     }
 
     .menu-title:hover {
       background: #8b0000;
       color: white;
-      border-left: 4px solid #d4af37;
     }
 
     .submenu {
       display: none;
-      background: #111;
     }
 
     .submenu a {
@@ -58,12 +81,17 @@
       padding: 10px 30px;
       color: #aaa;
       text-decoration: none;
-      transition: 0.2s;
     }
 
     .submenu a:hover {
       background: #8b0000;
       color: white;
+    }
+
+    .active {
+      background: #8b0000 !important;
+      color: white !important;
+      border-left: 4px solid #d4af37;
     }
 
     /* MAIN */
@@ -75,7 +103,6 @@
 
     h1 {
       text-align: center;
-      margin-bottom: 10px;
     }
 
     .subtitle {
@@ -91,7 +118,6 @@
       gap: 20px;
     }
 
-    /* CARDS */
     .card {
       background: #141414;
       border: 1px solid #2a2a2a;
@@ -99,17 +125,15 @@
       border-radius: 10px;
       padding: 20px;
       transition: 0.3s;
-      box-shadow: 0 0 10px rgba(0,0,0,0.6);
     }
 
     .card:hover {
-      transform: translateY(-5px) scale(1.02);
+      transform: scale(1.03);
       box-shadow: 0 0 25px rgba(139, 0, 0, 0.6);
       border-top: 4px solid #d4af37;
     }
 
     .card h3 {
-      margin-top: 0;
       color: #d4af37;
     }
 
@@ -121,115 +145,135 @@
       color: #eee;
       background: #1f1f1f;
       border-radius: 5px;
-      transition: 0.2s;
     }
 
     .card a:hover {
       background: #8b0000;
-      color: white;
-      transform: translateX(5px);
     }
 
-    .footer {
-      text-align: center;
-      color: #666;
-      margin-top: 40px;
-      font-size: 12px;
+    /* MOBILE */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .main {
+        margin-left: 0;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- SIDEBAR -->
-  <div class="sidebar">
-    <h2>BEHS Hub</h2>
+<div class="menu-toggle" onclick="toggleSidebar()">☰</div>
 
-    <div class="menu-section">
-      <div class="menu-title" onclick="toggleMenu(this)">Course Hubs</div>
-      <div class="submenu">
-        <a href="courses/ied.html">Engineering 1</a>
-        <a href="courses/poe.html">Engineering 2</a>
-        <a href="courses/de.html">Engineering 3</a>
-      </div>
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+  <h2>⚙️ BEHS Hub</h2>
+
+  <input type="text" class="search" placeholder="Search..." onkeyup="searchMenu(this.value)">
+
+  <div class="menu-title" onclick="toggleMenu(this)">📚 Course Hubs</div>
+  <div class="submenu">
+    <a href="courses/ied.html">🧩 Engineering 1</a>
+    <a href="courses/poe.html">⚙️ Engineering 2</a>
+    <a href="courses/de.html">🔌 Engineering 3</a>
+  </div>
+
+  <div class="menu-title" onclick="toggleMenu(this)">🤖 Robotics</div>
+  <div class="submenu">
+    <a href="robotics/robotics.html">🤖 Robotics Hub</a>
+  </div>
+
+  <div class="menu-title" onclick="toggleMenu(this)">📁 Resources</div>
+  <div class="submenu">
+    <a href="pltwarticleresources/pltwarticleresources.html">📄 Articles</a>
+    <a href="freqdocuments/freqdocuments.html">📑 Documents</a>
+    <a href="programsused/programsused.html">💻 Programs</a>
+    <a href="trainingsandcerts/trainingsandcerts.html">🏅 Certifications</a>
+    <a href="gamesandmore/gamesandmore.html">🎮 Games</a>
+  </div>
+
+  <div class="menu-title" onclick="toggleMenu(this)">📰 News</div>
+  <div class="submenu">
+    <a href="news/gallery.html">🖼️ Gallery</a>
+    <a href="news/newsletter.html">📰 Newsletter</a>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+  <h1>Engineering Pathway Hub</h1>
+  <div class="subtitle">Systems • Design • Innovation</div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>📚 Course Hubs</h3>
+      <a href="courses/ied.html">Engineering 1</a>
+      <a href="courses/poe.html">Engineering 2</a>
+      <a href="courses/de.html">Engineering 3</a>
     </div>
 
-    <div class="menu-section">
-      <div class="menu-title" onclick="toggleMenu(this)">Robotics</div>
-      <div class="submenu">
-        <a href="robotics/robotics.html">Robotics Hub</a>
-      </div>
+    <div class="card">
+      <h3>🤖 Robotics</h3>
+      <a href="robotics/robotics.html">Robotics Hub</a>
     </div>
 
-    <div class="menu-section">
-      <div class="menu-title" onclick="toggleMenu(this)">Resources</div>
-      <div class="submenu">
-        <a href="pltwarticleresources/pltwarticleresources.html">Articles</a>
-        <a href="freqdocuments/freqdocuments.html">Documents</a>
-        <a href="programsused/programsused.html">Programs</a>
-        <a href="trainingsandcerts/trainingsandcerts.html">Certifications</a>
-        <a href="gamesandmore/gamesandmore.html">Games</a>
-      </div>
+    <div class="card">
+      <h3>📁 Resources</h3>
+      <a href="pltwarticleresources/pltwarticleresources.html">Articles</a>
+      <a href="freqdocuments/freqdocuments.html">Documents</a>
+      <a href="programsused/programsused.html">Programs</a>
+      <a href="trainingsandcerts/trainingsandcerts.html">Certifications</a>
     </div>
 
-    <div class="menu-section">
-      <div class="menu-title" onclick="toggleMenu(this)">News</div>
-      <div class="submenu">
-        <a href="news/gallery.html">Gallery</a>
-        <a href="news/newsletter.html">Newsletter</a>
-      </div>
+    <div class="card">
+      <h3>📰 News</h3>
+      <a href="news/gallery.html">Gallery</a>
+      <a href="news/newsletter.html">Newsletter</a>
     </div>
 
   </div>
+</div>
 
-  <!-- MAIN -->
-  <div class="main">
-    <h1>Engineering Pathway Hub</h1>
-    <div class="subtitle">Systems • Design • Innovation</div>
+<script>
+  function toggleMenu(element) {
+    const submenu = element.nextElementSibling;
+    submenu.style.display =
+      submenu.style.display === "block" ? "none" : "block";
+  }
 
-    <div class="grid">
+  function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("hidden");
+  }
 
-      <div class="card">
-        <h3>Course Hubs</h3>
-        <a href="courses/ied.html">Intro to Engineering</a>
-        <a href="courses/poe.html">Principles of Engineering</a>
-        <a href="courses/de.html">Digital Electronics</a>
-      </div>
+  function searchMenu(query) {
+    query = query.toLowerCase();
+    const links = document.querySelectorAll(".submenu a");
 
-      <div class="card">
-        <h3>Robotics</h3>
-        <a href="robotics/robotics.html">Robotics Hub</a>
-      </div>
+    links.forEach(link => {
+      const text = link.textContent.toLowerCase();
+      link.style.display = text.includes(query) ? "block" : "none";
+    });
+  }
 
-      <div class="card">
-        <h3>Resources</h3>
-        <a href="pltwarticleresources/pltwarticleresources.html">PLTW Articles</a>
-        <a href="freqdocuments/freqdocuments.html">Documents</a>
-        <a href="programsused/programsused.html">Programs</a>
-        <a href="trainingsandcerts/trainingsandcerts.html">Certifications</a>
-        <a href="gamesandmore/gamesandmore.html">Games & More</a>
-      </div>
+  // ACTIVE LINK HIGHLIGHT
+  const links = document.querySelectorAll(".submenu a");
+  const current = window.location.pathname;
 
-      <div class="card">
-        <h3>Pathway News</h3>
-        <a href="news/gallery.html">Gallery</a>
-        <a href="news/newsletter.html">Newsletter</a>
-      </div>
-
-    </div>
-
-    <div class="footer">
-      BEHS Engineering • Where Ideas Become Solutions
-    </div>
-  </div>
-
-  <script>
-    function toggleMenu(element) {
-      const submenu = element.nextElementSibling;
-      submenu.style.display =
-        submenu.style.display === "block" ? "none" : "block";
+  links.forEach(link => {
+    if (current.includes(link.getAttribute("href"))) {
+      link.classList.add("active");
+      link.parentElement.style.display = "block";
     }
-  </script>
+  });
+</script>
 
 </body>
 </html>
