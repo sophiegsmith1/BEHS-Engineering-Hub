@@ -69,10 +69,13 @@ function initSidebar() {
 // TOGGLE SIDEBAR
 // ===============================
 function toggleSidebar() {
-  const sidebar = document.querySelector(".sidebar");
+  const sidebar = document.querySelector("#sidebar");
   const main = document.querySelector(".main");
 
-  if (!sidebar || !main) return;
+  if (!sidebar || !main) {
+    console.warn("Sidebar not ready yet");
+    return;
+  }
 
   sidebar.classList.toggle("closed");
   main.classList.toggle("expanded");
