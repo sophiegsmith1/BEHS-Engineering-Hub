@@ -83,8 +83,27 @@ function initSidebar() {
 // ===============================
 function toggleSidebar() {
   const sidebar = document.querySelector(".sidebar");
-  if (sidebar) sidebar.classList.toggle("hidden");
+  const main = document.querySelector(".main");
+
+  sidebar.classList.toggle("closed");
+  main.classList.toggle("expanded");
 }
 
 // ===============================
 document.addEventListener("DOMContentLoaded", loadSidebar);
+
+// =========================
+// Start Up Behavior
+// =========================
+
+document.addEventListener("DOMContentLoaded", () => {
+  const sidebar = document.querySelector(".sidebar");
+  const main = document.querySelector(".main");
+
+  if (!sidebar || !main) return;
+
+  if (window.innerWidth <= 768) {
+    sidebar.classList.add("closed");
+    main.classList.add("expanded");
+  }
+});
