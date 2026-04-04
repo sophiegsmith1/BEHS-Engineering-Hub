@@ -11,6 +11,38 @@ h1, h2, h3, .sidebar h2 {
   letter-spacing: 0.5px;
 }
 
+.accordion {
+  width: 100%;
+  text-align: left;
+  background: #f4f4f4;
+  border: none;
+  padding: 10px;
+  margin-top: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 6px;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.accordion.sub {
+  background: #e9e9e9;
+  margin-left: 10px;
+  font-size: 0.95em;
+}
+
+.panel {
+  display: none;
+  padding-left: 10px;
+  flex-direction: column;
+}
+
+.panel.sub-panel a {
+  display: block;
+  margin: 5px 0;
+  padding-left: 20px;
+  font-family: "Inter", sans-serif;
+  text-decoration: none;
+}
 /* =========================
    MOBILE TOGGLE BUTTON
 ========================= */
