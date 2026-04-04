@@ -1,38 +1,31 @@
-/* =========================
-   GLOBAL TYPOGRAPHY + BASE
-========================= */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-
 body {
   margin: 0;
-  font-family: 'Inter', Arial, sans-serif;
+  font-family: Arial, sans-serif;
   background: radial-gradient(circle at top, #1a1a1a, #0a0a0a);
   color: #f5f5f5;
   display: flex;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 /* =========================
-   SUBTLE BACKGROUND DEPTH
+   MOBILE TOGGLE BUTTON
 ========================= */
-
-body::before {
-  content: "";
+.menu-toggle {
+  display: none;
   position: fixed;
-  inset: 0;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(139,0,0,0.08), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(212,175,55,0.05), transparent 45%);
-  pointer-events: none;
-  z-index: 0;
+  top: 12px;
+  left: 12px;
+  background: #8b0000;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 9999;
+  box-shadow: 0 0 15px rgba(139,0,0,0.5);
 }
 
 /* =========================
-   SIDEBAR (REFINED)
+   SIDEBAR
 ========================= */
-
 .sidebar {
   width: 260px;
   height: 100vh;
@@ -42,99 +35,67 @@ body::before {
   position: fixed;
   overflow-y: auto;
   transform: translateX(0);
-  transition: transform 0.35s ease, box-shadow 0.3s ease;
-  box-shadow: 10px 0 35px rgba(0,0,0,0.7);
-  z-index: 10;
+  transition: transform 0.3s ease;
+  box-shadow: 10px 0 30px rgba(0,0,0,0.6);
 }
 
 .sidebar.closed {
-  transform: translateX(0%);
+  transform: translateX(-100%);
 }
 
 .sidebar h2 {
   text-align: center;
   color: #d4af37;
   letter-spacing: 1px;
-  font-weight: 600;
 }
 
-/* =========================
-   SEARCH BAR (MODERNIZED)
-========================= */
-
+/* SEARCH */
 .search {
   margin: 15px;
-  padding: 10px 12px;
+  padding: 10px;
   width: calc(100% - 30px);
-  border-radius: 8px;
-  border: 1px solid #2a2a2a;
-  background: #1a1a1a;
+  border-radius: 6px;
+  border: none;
+  background: #1e1e1e;
   color: white;
   outline: none;
-  transition: 0.2s ease;
 }
 
-.search:focus {
-  border-color: #8b0000;
-  box-shadow: 0 0 10px rgba(139,0,0,0.3);
-}
-
-/* =========================
-   MENU TITLES (MORE PREMIUM)
-========================= */
-
+/* MENU HEADERS */
 .menu-title {
   padding: 12px 20px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: bold;
   color: #ccc;
-  transition: all 0.25s ease;
-  letter-spacing: 0.3px;
+  transition: 0.2s;
 }
 
 .menu-title:hover {
-  background: rgba(139,0,0,0.15);
-  color: #fff;
+  background: #8b0000;
+  color: white;
 }
 
-/* =========================
-   SUBMENU (SMOOTHER)
-========================= */
-
+/* SUBMENU */
 .submenu {
   display: none;
-  overflow: hidden;
 }
 
 .submenu.open {
   display: block;
-  animation: fadeIn 0.25s ease;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-5px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* =========================
-   LINKS (MODERN CARDS STYLE)
-========================= */
-
+/* LINKS */
 .submenu a {
   display: block;
-  margin: 6px 12px;
-  padding: 10px 12px;
+  padding: 10px 30px;
   color: #bbb;
   text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-  background: rgba(255,255,255,0.02);
+  transition: 0.2s;
 }
 
 .submenu a:hover {
-  background: rgba(139,0,0,0.35);
-  color: #fff;
-  transform: translateX(4px);
+  background: #8b0000;
+  color: white;
 }
 
 /* ACTIVE LINK */
@@ -145,16 +106,13 @@ body::before {
 }
 
 /* =========================
-   MAIN CONTENT (CLEANER SPACING)
+   MAIN CONTENT
 ========================= */
-
 .main {
   margin-left: 260px;
-  padding: 40px;
+  padding: 35px;
   width: 100%;
-  transition: margin-left 0.35s ease;
-  position: relative;
-  z-index: 1;
+  transition: margin-left 0.3s ease;
 }
 
 .main.expanded {
@@ -164,8 +122,6 @@ body::before {
 h1 {
   text-align: center;
   color: #f5f5f5;
-  font-weight: 600;
-  letter-spacing: 0.5px;
 }
 
 .subtitle {
@@ -174,80 +130,50 @@ h1 {
   margin-bottom: 30px;
 }
 
-/* =========================
-   GRID CARDS (MORE DEPTH)
-========================= */
-
+/* GRID CARDS */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 22px;
+  gap: 20px;
 }
 
 .card {
-  background: linear-gradient(145deg, #141414, #101010);
+  background: #141414;
   border: 1px solid #2a2a2a;
   border-top: 4px solid #8b0000;
-  border-radius: 14px;
-  padding: 22px;
+  border-radius: 12px;
+  padding: 20px;
   transition: all 0.25s ease;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
 .card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 0 30px rgba(139, 0, 0, 0.4);
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 25px rgba(139, 0, 0, 0.6);
   border-top: 4px solid #d4af37;
 }
 
 .card h3 {
   color: #d4af37;
-  font-weight: 600;
 }
 
 .card a {
   display: block;
   margin: 8px 0;
-  padding: 8px 10px;
+  padding: 8px;
   text-decoration: none;
   color: #eee;
   background: #1f1f1f;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  border-radius: 6px;
+  transition: 0.2s;
 }
 
 .card a:hover {
   background: #8b0000;
-  transform: translateX(4px);
-}
-
-/* =========================
-   MENU TOGGLE (PREMIUM FEEL)
-========================= */
-
-.menu-toggle {
-  display: none;
-  position: fixed;
-  top: 12px;
-  left: 12px;
-  background: #8b0000;
-  color: white;
-  padding: 10px 12px;
-  border-radius: 10px;
-  cursor: pointer;
-  z-index: 9999;
-  box-shadow: 0 8px 20px rgba(139,0,0,0.35);
-  transition: transform 0.2s ease;
-}
-
-.menu-toggle:hover {
-  transform: scale(1.08);
 }
 
 /* =========================
    MOBILE
 ========================= */
-
 @media (max-width: 768px) {
 
   .menu-toggle {
@@ -262,19 +188,11 @@ h1 {
     transform: translateX(-100%);
   }
 
+  .sidebar:not(.closed) {
+    transform: translateX(0);
+  }
+
   .main {
     margin-left: 0;
   }
-
-  .main.expanded {
-    margin-left: 0;
-  }
-}
-
-/* =========================
-   SMOOTH SCROLLING
-========================= */
-
-html {
-  scroll-behavior: smooth;
 }
