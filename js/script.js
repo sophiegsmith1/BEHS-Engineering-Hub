@@ -1,23 +1,12 @@
 // ===============================
-// SIDEBAR LOADER
+// SIDEBAR LOADER (GITHUB SAFE)
 // ===============================
 async function loadSidebar() {
   const container = document.getElementById("sidebar-container");
   if (!container) return;
 
-  let path = "components/sidebar.html";
-
-  if (
-    window.location.pathname.includes("/courses/") ||
-    window.location.pathname.includes("/resources/") ||
-    window.location.pathname.includes("/news/") ||
-    window.location.pathname.includes("/robotics/")
-  ) {
-    path = "../components/sidebar.html";
-  }
-
   try {
-    const res = await fetch(path);
+    const res = await fetch("./components/sidebar.html");
 
     if (!res.ok) {
       throw new Error(`Failed to load sidebar: ${res.status}`);
@@ -27,8 +16,6 @@ async function loadSidebar() {
     container.innerHTML = html;
 
     initSidebar();
-
-    // ensure correct initial state AFTER load
     initResponsiveSidebar();
 
   } catch (err) {
@@ -43,6 +30,7 @@ async function loadSidebar() {
 // ===============================
 function initSidebar() {
 
+  // dropdowns
   document.querySelectorAll(".menu-title").forEach(title => {
     title.addEventListener("click", () => {
       const submenu = title.nextElementSibling;
@@ -50,6 +38,7 @@ function initSidebar() {
     });
   });
 
+  // search
   window.searchMenu = function (query) {
     const links = document.querySelectorAll(".submenu a");
 
@@ -61,10 +50,13 @@ function initSidebar() {
     });
   };
 
+  // active link highlighting
   const current = window.location.pathname;
 
   document.querySelectorAll(".submenu a").forEach(link => {
-    if (current.includes(link.getAttribute("href"))) {
+    const href = link.getAttribute("href");
+
+    if (current.includes(href)) {
       link.classList.add("active");
       link.parentElement.classList.add("open");
     }
@@ -89,20 +81,17 @@ function toggleSidebar() {
 // ===============================
 function initResponsiveSidebar() {
   const sidebar = document.querySelector(".sidebar");
-  const main = document.querySelector(".main");
 
-  if (!sidebar || !main) return;
+  if (!sidebar) return;
 
   if (window.innerWidth <= 768) {
     sidebar.classList.add("closed");
-    main.classList.add("expanded");
   } else {
     sidebar.classList.remove("closed");
-    main.classList.remove("expanded");
   }
 }
 
-// optional: handle resize live
+// update on resize
 window.addEventListener("resize", initResponsiveSidebar);
 
 // ===============================
