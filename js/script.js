@@ -5,19 +5,33 @@ async function loadSidebar() {
   const container = document.getElementById("sidebar-container");
   if (!container) return;
 
-  const depth = getDepth();              // number of "../"
-  const prefix = "../".repeat(depth);    // add ../ for subfolders
-  const path = `${prefix}components/sidebar.html`;
+  // Always correct for GitHub Pages
+  let path = "components/sidebar.html";
+
+  // If we're inside a folder (courses/, resources/, etc.)
+  if (window.location.pathname.includes("/courses/") ||
+      window.location.pathname.includes("/resources/") ||
+      window.location.pathname.includes("/news/") ||
+      window.location.pathname.includes("/robotics/")) {
+    path = "../components/sidebar.html";
+  }
 
   try {
     const res = await fetch(path);
-    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+
+    if (!res.ok) {
+      throw new Error(`Failed to load sidebar: ${res.status} at ${path}`);
+    }
+
     const html = await res.text();
     container.innerHTML = html;
-    initSidebar(); // initialize menu after load
+
+    initSidebar();
+
   } catch (err) {
-    console.error("Sidebar failed to load:", err);
-    container.innerHTML = "<p style='color:red;'>Sidebar failed to load</p>";
+    console.error(err);
+    container.innerHTML =
+      "<p style='color:red;'>Sidebar failed to load (GitHub Pages path issue)</p>";
   }
 }
 
