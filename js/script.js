@@ -1,26 +1,29 @@
 // ===============================
-// SIDEBAR LOADER
+// CONFIG
+// ===============================
+const BASE = "/BEHS-Engineering-Hub";
+
+// ===============================
+// LOAD SIDEBAR
 // ===============================
 async function loadSidebar() {
   const container = document.getElementById("sidebar-container");
   if (!container) return;
 
-  const BASE = "/BEHS-Engineering-Hub";
-
   try {
     const res = await fetch(`${BASE}/components/sidebar.html`);
 
     if (!res.ok) {
-      throw new Error(`Sidebar failed to load: ${res.status}`);
+      throw new Error(`Sidebar failed: ${res.status}`);
     }
 
     const html = await res.text();
     container.innerHTML = html;
 
-    // initialize AFTER sidebar is injected
+    // Initialize AFTER sidebar exists
     initSidebar();
-    initResponsiveSidebar();
-    attachToggle();
+    initToggle();
+    initResponsive();
 
   } catch (err) {
     console.error(err);
@@ -30,11 +33,11 @@ async function loadSidebar() {
 }
 
 // ===============================
-// SIDEBAR INTERACTIONS
+// SIDEBAR DROPDOWNS + SEARCH + ACTIVE LINK
 // ===============================
 function initSidebar() {
 
-  // dropdown menus
+  // dropdowns
   document.querySelectorAll(".menu-title").forEach(title => {
     title.addEventListener("click", () => {
       const submenu = title.nextElementSibling;
@@ -48,9 +51,8 @@ function initSidebar() {
 
     links.forEach(link => {
       const text = link.textContent.toLowerCase();
-      link.style.display = text.includes(query.toLowerCase())
-        ? "block"
-        : "none";
+      link.style.display =
+        text.includes(query.toLowerCase()) ? "block" : "none";
     });
   };
 
@@ -68,46 +70,43 @@ function initSidebar() {
 }
 
 // ===============================
-// TOGGLE FUNCTION
+// TOGGLE SIDEBAR (FIXED)
 // ===============================
-function toggleSidebar() {
-  const sidebar = document.querySelector("#sidebar");
+function initToggle() {
+  const btn = document.getElementById("menu-toggle");
+
+  if (!btn) return;
+
+  btn.addEventListener("click", () => {
+    const sidebar = document.getElementById("sidebar");
+    const main = document.querySelector(".main");
+
+    if (!sidebar || !main) return;
+
+    sidebar.classList.toggle("closed");
+    main.classList.toggle("expanded");
+  });
+}
+
+// ===============================
+// RESPONSIVE BEHAVIOR
+// ===============================
+function initResponsive() {
+  const sidebar = document.getElementById("sidebar");
   const main = document.querySelector(".main");
 
   if (!sidebar || !main) return;
 
-  sidebar.classList.toggle("closed");
-  main.classList.toggle("expanded");
-}
-
-// ===============================
-// ATTACH TOGGLE BUTTON
-// ===============================
-function attachToggle() {
-  const toggleBtn = document.getElementById("menu-toggle");
-
-  if (toggleBtn) {
-    toggleBtn.addEventListener("click", toggleSidebar);
-  }
-}
-
-// ===============================
-// RESPONSIVE INIT STATE
-// ===============================
-function initResponsiveSidebar() {
-  const sidebar = document.querySelector("#sidebar");
-
-  if (!sidebar) return;
-
   if (window.innerWidth <= 768) {
     sidebar.classList.add("closed");
+    main.classList.add("expanded");
   } else {
     sidebar.classList.remove("closed");
+    main.classList.remove("expanded");
   }
 }
 
-// update on resize
-window.addEventListener("resize", initResponsiveSidebar);
+window.addEventListener("resize", initResponsive);
 
 // ===============================
 // INIT
