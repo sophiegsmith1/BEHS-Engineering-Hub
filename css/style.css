@@ -243,3 +243,21 @@ h1 {
   transform: scale(1.1);
   box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
+
+@media (max-width: 768px) {
+  .main {
+    margin-left: 0;
+  }
+
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.closed {
+    transform: translateX(-100%);
+  }
+
+  .sidebar:not(.closed) {
+    transform: translateX(0);
+  }
+}
