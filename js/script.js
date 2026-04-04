@@ -5,7 +5,7 @@ async function loadSidebar() {
   const container = document.getElementById("sidebar-container");
   if (!container) return;
 
-  const BASE = "/BEHS-Engineering-Hub"; // 👈 YOUR REPO NAME
+  const BASE = "/BEHS-Engineering-Hub";
 
   try {
     const res = await fetch(`${BASE}/components/sidebar.html`);
@@ -17,8 +17,10 @@ async function loadSidebar() {
     const html = await res.text();
     container.innerHTML = html;
 
+    // initialize AFTER sidebar is injected
     initSidebar();
     initResponsiveSidebar();
+    attachToggle();
 
   } catch (err) {
     console.error(err);
@@ -32,7 +34,7 @@ async function loadSidebar() {
 // ===============================
 function initSidebar() {
 
-  // dropdowns
+  // dropdown menus
   document.querySelectorAll(".menu-title").forEach(title => {
     title.addEventListener("click", () => {
       const submenu = title.nextElementSibling;
@@ -52,7 +54,7 @@ function initSidebar() {
     });
   };
 
-  // active link highlighting
+  // active link highlight
   const current = window.location.pathname;
 
   document.querySelectorAll(".submenu a").forEach(link => {
@@ -66,26 +68,34 @@ function initSidebar() {
 }
 
 // ===============================
-// TOGGLE SIDEBAR
+// TOGGLE FUNCTION
 // ===============================
 function toggleSidebar() {
   const sidebar = document.querySelector("#sidebar");
   const main = document.querySelector(".main");
 
-  if (!sidebar || !main) {
-    console.warn("Sidebar not ready yet");
-    return;
-  }
+  if (!sidebar || !main) return;
 
   sidebar.classList.toggle("closed");
   main.classList.toggle("expanded");
 }
 
 // ===============================
+// ATTACH TOGGLE BUTTON
+// ===============================
+function attachToggle() {
+  const toggleBtn = document.getElementById("menu-toggle");
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", toggleSidebar);
+  }
+}
+
+// ===============================
 // RESPONSIVE INIT STATE
 // ===============================
 function initResponsiveSidebar() {
-  const sidebar = document.querySelector(".sidebar");
+  const sidebar = document.querySelector("#sidebar");
 
   if (!sidebar) return;
 
