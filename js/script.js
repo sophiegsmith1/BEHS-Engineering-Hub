@@ -5,11 +5,10 @@ async function loadSidebar() {
   const container = document.getElementById("sidebar-container");
   if (!container) return;
 
-  try {
-    // ALWAYS load from site root
-    const path = "/components/sidebar.html";
+  const BASE = "/BEHS-Engineering-Hub"; // 👈 YOUR REPO NAME
 
-    const res = await fetch(path);
+  try {
+    const res = await fetch(`${BASE}/components/sidebar.html`);
 
     if (!res.ok) {
       throw new Error(`Sidebar failed to load: ${res.status}`);
