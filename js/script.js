@@ -108,6 +108,18 @@ function initResponsive() {
 
 window.addEventListener("resize", initResponsive);
 
+document.querySelectorAll(".accordion").forEach(button => {
+  button.addEventListener("click", () => {
+    const panel = button.nextElementSibling;
+
+    if (panel.style.display === "flex" || panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "flex";
+    }
+  });
+});
+
 // ===============================
 // INIT
 // ===============================
