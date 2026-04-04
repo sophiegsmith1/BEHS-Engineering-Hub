@@ -19,7 +19,7 @@ body {
   padding: 10px 12px;
   border-radius: 8px;
   cursor: pointer;
-  z-index: 2000;
+  z-index: 9999;
   box-shadow: 0 0 15px rgba(139,0,0,0.5);
 }
 
@@ -181,19 +181,18 @@ h1 {
   }
 
   .sidebar {
-    transform: translateX(-100%);
-    z-index: 1500;
+    transform: translateX(0%);
   }
 
   .sidebar.closed {
     transform: translateX(-100%);
   }
 
-  .main {
-    margin-left: 0;
+  .sidebar:not(.closed) {
+    transform: translateX(0);
   }
 
-  .main.expanded {
+  .main {
     margin-left: 0;
   }
 }
