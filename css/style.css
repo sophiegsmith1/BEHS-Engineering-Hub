@@ -48,7 +48,7 @@ body::before {
 }
 
 .sidebar.closed {
-  transform: translateX(-100%);
+  transform: translateX(0%);
 }
 
 .sidebar h2 {
@@ -255,7 +255,7 @@ h1 {
   }
 
   .sidebar {
-    transform: translateX(-100%);
+    transform: translateX(0%);
   }
 
   .sidebar.closed {
