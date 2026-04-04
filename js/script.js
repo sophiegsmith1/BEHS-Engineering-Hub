@@ -70,21 +70,25 @@ function initSidebar() {
 }
 
 // ===============================
-// TOGGLE SIDEBAR (FIXED)
+// TOGGLE SIDEBAR (UPDATED FOR NEW CSS)
 // ===============================
 function initToggle() {
   const btn = document.getElementById("menu-toggle");
+  const sidebar = document.querySelector(".sidebar");
+  const main = document.querySelector(".main-content");
 
-  if (!btn) return;
+  if (!btn || !sidebar || !main) return;
 
   btn.addEventListener("click", () => {
-    const sidebar = document.getElementById("sidebar");
-    const main = document.querySelector(".main");
+    const isMobile = window.innerWidth <= 768;
 
-    if (!sidebar || !main) return;
-
-    sidebar.classList.toggle("closed");
-    main.classList.toggle("expanded");
+    if (isMobile) {
+      // MOBILE: slide in/out
+      sidebar.classList.toggle("open");
+    } else {
+      // DESKTOP: collapse sidebar
+      sidebar.classList.toggle("closed");
+    }
   });
 }
 
@@ -92,17 +96,18 @@ function initToggle() {
 // RESPONSIVE BEHAVIOR
 // ===============================
 function initResponsive() {
-  const sidebar = document.getElementById("sidebar");
-  const main = document.querySelector(".main");
+  const sidebar = document.querySelector(".sidebar");
+  const main = document.querySelector(".main-content");
 
   if (!sidebar || !main) return;
 
-  if (window.innerWidth <= 768) {
-    sidebar.classList.add("closed");
-    main.classList.add("expanded");
-  } else {
+  const isMobile = window.innerWidth <= 768;
+
+  if (isMobile) {
     sidebar.classList.remove("closed");
-    main.classList.remove("expanded");
+    sidebar.classList.remove("open");
+  } else {
+    sidebar.classList.remove("open");
   }
 }
 
