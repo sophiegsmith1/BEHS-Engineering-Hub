@@ -1,9 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+  --red: #8b0000;
+  --gold: #d4af37;
+  --black: #0a0a0a;
+  --dark: #111;
+  --gray: #2a2a2a;
+  --text: #eaeaea;
+}
+
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: radial-gradient(circle at top, #1a1a1a, #0a0a0a);
-  color: #f5f5f5;
+  font-family: "Inter", sans-serif;
+  background: radial-gradient(circle at top, #1a1a1a, #050505);
+  color: var(--text);
   display: flex;
+  overflow-x: hidden;
 }
 
 /* =========================
@@ -27,16 +39,22 @@ body {
    SIDEBAR
 ========================= */
 .sidebar {
-  width: 260px;
+  width: 270px;
   height: 100vh;
-  background: #0d0d0d;
-  border-right: 2px solid #8b0000;
-  padding-top: 20px;
   position: fixed;
+  padding-top: 20px;
   overflow-y: auto;
-  transform: translateX(0);
+
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(12px);
+
+  border-right: 1px solid rgba(139, 0, 0, 0.6);
+
+  box-shadow:
+    0 0 25px rgba(139, 0, 0, 0.25),
+    inset 0 0 40px rgba(0, 0, 0, 0.6);
+
   transition: transform 0.3s ease;
-  box-shadow: 10px 0 30px rgba(0,0,0,0.6);
 }
 
 .sidebar.closed {
@@ -45,8 +63,10 @@ body {
 
 .sidebar h2 {
   text-align: center;
-  color: #d4af37;
-  letter-spacing: 1px;
+  font-family: "Orbitron", sans-serif;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
 }
 
 /* SEARCH */
@@ -65,13 +85,17 @@ body {
 .menu-title {
   padding: 12px 20px;
   cursor: pointer;
-  font-weight: bold;
-  color: #ccc;
+  font-weight: 600;
+  color: #bbb;
+  letter-spacing: 1px;
   transition: 0.2s;
+
+  border-left: 3px solid transparent;
 }
 
 .menu-title:hover {
-  background: #8b0000;
+  background: rgba(139, 0, 0, 0.2);
+  border-left: 3px solid var(--gold);
   color: white;
 }
 
@@ -88,14 +112,25 @@ body {
 .submenu a {
   display: block;
   padding: 10px 30px;
-  color: #bbb;
+  color: #cfcfcf;
   text-decoration: none;
+
   transition: 0.2s;
+
+  border-left: 2px solid transparent;
 }
 
 .submenu a:hover {
-  background: #8b0000;
+  background: rgba(139, 0, 0, 0.25);
+  border-left: 2px solid var(--gold);
   color: white;
+  transform: translateX(4px);
+}
+
+.submenu a.active {
+  background: rgba(212, 175, 55, 0.15);
+  border-left: 3px solid var(--gold);
+  color: var(--gold);
 }
 
 /* ACTIVE LINK */
@@ -109,25 +144,23 @@ body {
    MAIN CONTENT
 ========================= */
 .main {
-  margin-left: 260px;
-  padding: 35px;
+  margin-left: 270px;
+  padding: 40px;
   width: 100%;
+
   transition: margin-left 0.3s ease;
 }
 
-.main.expanded {
-  margin-left: 0;
-}
-
 h1 {
+  font-family: "Orbitron", sans-serif;
   text-align: center;
-  color: #f5f5f5;
+  color: white;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
 }
 
 .subtitle {
   text-align: center;
   color: #aaa;
-  margin-bottom: 30px;
 }
 
 /* GRID CARDS */
@@ -138,18 +171,27 @@ h1 {
 }
 
 .card {
-  background: #141414;
-  border: 1px solid #2a2a2a;
-  border-top: 4px solid #8b0000;
-  border-radius: 12px;
+  background: rgba(20, 20, 20, 0.75);
+  border: 1px solid rgba(139, 0, 0, 0.3);
+  border-radius: 14px;
+
   padding: 20px;
-  transition: all 0.25s ease;
+
+  box-shadow:
+    0 0 15px rgba(0, 0, 0, 0.4),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+
+  transition: 0.25s ease;
 }
 
 .card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 0 25px rgba(139, 0, 0, 0.6);
-  border-top: 4px solid #d4af37;
+  transform: translateY(-6px) scale(1.02);
+
+  border-color: var(--gold);
+
+  box-shadow:
+    0 0 25px rgba(139, 0, 0, 0.4),
+    0 0 40px rgba(212, 175, 55, 0.15);
 }
 
 .card h3 {
@@ -176,23 +218,28 @@ h1 {
 ========================= */
 @media (max-width: 768px) {
 
-  .menu-toggle {
-    display: block;
-  }
+ .menu-toggle {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 9999;
 
-  .sidebar {
-    transform: translateX(0%);
-  }
+  background: linear-gradient(135deg, #8b0000, #3a0000);
+  color: white;
 
-  .sidebar.closed {
-    transform: translateX(-100%);
-  }
+  padding: 10px 14px;
+  border-radius: 10px;
 
-  .sidebar:not(.closed) {
-    transform: translateX(0);
-  }
+  cursor: pointer;
 
-  .main {
-    margin-left: 0;
-  }
+  box-shadow:
+    0 0 15px rgba(139, 0, 0, 0.4),
+    0 0 25px rgba(0, 0, 0, 0.6);
+
+  transition: 0.2s ease;
+}
+
+.menu-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
