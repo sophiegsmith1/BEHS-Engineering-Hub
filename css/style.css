@@ -34,11 +34,12 @@ body {
   padding-top: 20px;
   position: fixed;
   overflow-y: auto;
+  transform: translateX(0);
   transition: transform 0.3s ease;
   box-shadow: 10px 0 30px rgba(0,0,0,0.6);
 }
 
-.sidebar.hidden {
+.sidebar.closed {
   transform: translateX(-100%);
 }
 
@@ -111,6 +112,11 @@ body {
   margin-left: 260px;
   padding: 35px;
   width: 100%;
+  transition: margin-left 0.3s ease;
+}
+
+.main.expanded {
+  margin-left: 0;
 }
 
 h1 {
@@ -169,36 +175,21 @@ h1 {
    MOBILE
 ========================= */
 @media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-    z-index: 1500;
-  }
 
   .menu-toggle {
     display: block;
   }
 
-  /* ==========================
-     TOGGLE SIDEBAR
-  =========================== */
-
   .sidebar {
-  transform: translateX(0);
-}
-
-.sidebar.closed {
-  transform: translateX(-100%);
-}
-
-.main {
-  transition: margin-left 0.3s ease;
-}
-
-.main.expanded {
-  margin-left: 0;
-}
+    transform: translateX(-100%);
+    z-index: 1500;
+  }
 
   .main {
+    margin-left: 0;
+  }
+
+  .main.expanded {
     margin-left: 0;
   }
 }
