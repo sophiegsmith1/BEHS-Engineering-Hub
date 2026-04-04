@@ -185,6 +185,10 @@ h1 {
     z-index: 1500;
   }
 
+  .sidebar.closed {
+    transform: translateX(-100%);
+  }
+
   .main {
     margin-left: 0;
   }
