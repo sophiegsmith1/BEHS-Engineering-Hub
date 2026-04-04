@@ -14,38 +14,61 @@
 
     /* SIDEBAR */
     .sidebar {
-      width: 220px;
+      width: 240px;
       height: 100vh;
-      background: #111;
+      background: #0f0f0f;
       border-right: 2px solid #8b0000;
       padding-top: 20px;
       position: fixed;
+      overflow-y: auto;
     }
 
     .sidebar h2 {
       text-align: center;
       color: #d4af37;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
     }
 
-    .sidebar a {
-      display: block;
+    .menu-section {
+      margin-bottom: 10px;
+    }
+
+    .menu-title {
       padding: 12px 20px;
+      cursor: pointer;
       color: #ccc;
-      text-decoration: none;
+      font-weight: bold;
       border-left: 4px solid transparent;
       transition: 0.2s;
     }
 
-    .sidebar a:hover {
+    .menu-title:hover {
       background: #8b0000;
       color: white;
       border-left: 4px solid #d4af37;
     }
 
-    /* MAIN CONTENT */
+    .submenu {
+      display: none;
+      background: #111;
+    }
+
+    .submenu a {
+      display: block;
+      padding: 10px 30px;
+      color: #aaa;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+
+    .submenu a:hover {
+      background: #8b0000;
+      color: white;
+    }
+
+    /* MAIN */
     .main {
-      margin-left: 220px;
+      margin-left: 240px;
       padding: 30px;
       width: 100%;
     }
@@ -75,13 +98,13 @@
       border-top: 4px solid #8b0000;
       border-radius: 10px;
       padding: 20px;
-      transition: 0.25s;
+      transition: 0.3s;
       box-shadow: 0 0 10px rgba(0,0,0,0.6);
     }
 
     .card:hover {
       transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
+      box-shadow: 0 0 25px rgba(139, 0, 0, 0.6);
       border-top: 4px solid #d4af37;
     }
 
@@ -104,9 +127,9 @@
     .card a:hover {
       background: #8b0000;
       color: white;
+      transform: translateX(5px);
     }
 
-    /* FOOTER */
     .footer {
       text-align: center;
       color: #666;
@@ -121,12 +144,42 @@
   <!-- SIDEBAR -->
   <div class="sidebar">
     <h2>BEHS Hub</h2>
-    <a href="#">Home</a>
-    <a href="courses/ied.html">Engineering 1</a>
-    <a href="courses/poe.html">Engineering 2</a>
-    <a href="courses/de.html">Engineering 3</a>
-    <a href="robotics/robotics.html">Robotics</a>
-    <a href="news/newsletter.html"> Monthly Newsletter</a>
+
+    <div class="menu-section">
+      <div class="menu-title" onclick="toggleMenu(this)">Course Hubs</div>
+      <div class="submenu">
+        <a href="courses/ied.html">Engineering 1</a>
+        <a href="courses/poe.html">Engineering 2</a>
+        <a href="courses/de.html">Engineering 3</a>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <div class="menu-title" onclick="toggleMenu(this)">Robotics</div>
+      <div class="submenu">
+        <a href="robotics/robotics.html">Robotics Hub</a>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <div class="menu-title" onclick="toggleMenu(this)">Resources</div>
+      <div class="submenu">
+        <a href="pltwarticleresources/pltwarticleresources.html">Articles</a>
+        <a href="freqdocuments/freqdocuments.html">Documents</a>
+        <a href="programsused/programsused.html">Programs</a>
+        <a href="trainingsandcerts/trainingsandcerts.html">Certifications</a>
+        <a href="gamesandmore/gamesandmore.html">Games</a>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <div class="menu-title" onclick="toggleMenu(this)">News</div>
+      <div class="submenu">
+        <a href="news/gallery.html">Gallery</a>
+        <a href="news/newsletter.html">Newsletter</a>
+      </div>
+    </div>
+
   </div>
 
   <!-- MAIN -->
@@ -138,9 +191,9 @@
 
       <div class="card">
         <h3>Course Hubs</h3>
-        <a href="courses/ied.html">Engineering 1 - Intro to Engineering</a>
-        <a href="courses/poe.html">Engineering 2 - Principles of Engineering</a>
-        <a href="courses/de.html">Engineering 3 - Digital Electronics</a>
+        <a href="courses/ied.html">Intro to Engineering</a>
+        <a href="courses/poe.html">Principles of Engineering</a>
+        <a href="courses/de.html">Digital Electronics</a>
       </div>
 
       <div class="card">
@@ -150,17 +203,17 @@
 
       <div class="card">
         <h3>Resources</h3>
-        <a href="pltwarticleresources/pltwarticleresources.html">PLTW Article Resources</a>
-        <a href="freqdocuments/freqdocuments.html">Frequently Used Documents</a>
-        <a href="programsused/programsused.html">Programs Used</a>
-        <a href="trainingsandcerts/trainingsandcerts.html">Trainings & Certifications</a>
-         <a href="gamesandmore/gamesandmore.html">Games & More</a>
+        <a href="pltwarticleresources/pltwarticleresources.html">PLTW Articles</a>
+        <a href="freqdocuments/freqdocuments.html">Documents</a>
+        <a href="programsused/programsused.html">Programs</a>
+        <a href="trainingsandcerts/trainingsandcerts.html">Certifications</a>
+        <a href="gamesandmore/gamesandmore.html">Games & More</a>
       </div>
 
       <div class="card">
         <h3>Pathway News</h3>
         <a href="news/gallery.html">Gallery</a>
-        <a href="news/newsletter.html">Monthly Newsletter</a>
+        <a href="news/newsletter.html">Newsletter</a>
       </div>
 
     </div>
@@ -168,8 +221,15 @@
     <div class="footer">
       BEHS Engineering • Where Ideas Become Solutions
     </div>
-
   </div>
+
+  <script>
+    function toggleMenu(element) {
+      const submenu = element.nextElementSibling;
+      submenu.style.display =
+        submenu.style.display === "block" ? "none" : "block";
+    }
+  </script>
 
 </body>
 </html>
