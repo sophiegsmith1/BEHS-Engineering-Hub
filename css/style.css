@@ -178,6 +178,26 @@ h1 {
     display: block;
   }
 
+  /* ==========================
+     TOGGLE SIDEBAR
+  =========================== */
+
+  .sidebar {
+  transform: translateX(0);
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+.main {
+  transition: margin-left 0.3s ease;
+}
+
+.main.expanded {
+  margin-left: 0;
+}
+
   .main {
     margin-left: 0;
   }
