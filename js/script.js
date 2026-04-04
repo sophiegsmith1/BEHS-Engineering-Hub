@@ -3,21 +3,18 @@
 // ===============================
 async function loadSidebar() {
   const container = document.getElementById("sidebar-container");
-
   if (!container) return;
 
-  const depth = getDepth();
-  const prefix = "../".repeat(depth);
-
+  const depth = getDepth();              // number of "../"
+  const prefix = "../".repeat(depth);    // add ../ for subfolders
   const path = `${prefix}components/sidebar.html`;
 
   try {
     const res = await fetch(path);
+    if (!res.ok) throw new Error(`HTTP error ${res.status}`);
     const html = await res.text();
-
     container.innerHTML = html;
-
-    initSidebar();
+    initSidebar(); // initialize menu after load
   } catch (err) {
     console.error("Sidebar failed to load:", err);
     container.innerHTML = "<p style='color:red;'>Sidebar failed to load</p>";
@@ -26,9 +23,11 @@ async function loadSidebar() {
 
 // ===============================
 function getDepth() {
-  const path = window.location.pathname;
-  const parts = path.split("/").filter(Boolean);
-  const isFile = parts.length && parts[parts.length - 1].includes(".");
+  const path = window.location.pathname; 
+  // remove leading slash and split by /
+  const parts = path.replace(/^\/+/, "").split("/"); 
+  // last part is file name if it contains a dot
+  const isFile = parts[parts.length - 1].includes(".");
   return isFile ? parts.length - 1 : parts.length;
 }
 
