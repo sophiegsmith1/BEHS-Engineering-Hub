@@ -164,71 +164,76 @@ h1, h2, h3 {
 }
 
 /* =========================
-   COURSE HUB INTERACTIVITY
+   LESSON & ACTIVITY DRILL-DOWN
 ========================= */
-.unit-section {
-  margin-bottom: 10px;
+.lesson-container {
+  margin-bottom: 8px;
 }
 
-.unit-toggle {
+/* The Lesson Button - Fixing the "White Box" issue */
+.lesson-btn {
   width: 100%;
-  text-align: left;
-  background: #1f1f1f;
-  color: #eee;
+  padding: 12px 15px;
+  background: #1a1a1a; /* Explicit Dark Background */
+  color: #d4af37;      /* Gold Text */
   border: 1px solid #333;
-  padding: 12px;
   border-radius: 6px;
-  cursor: pointer;
+  text-align: left;
   font-family: "Inter", sans-serif;
-  font-weight: 500;
-  transition: 0.2s;
+  font-weight: 600;
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.2s ease;
 }
 
-.unit-toggle:hover {
-  background: #2a2a2a;
+.lesson-btn:hover {
+  background: #252525;
   border-color: #8b0000;
+  box-shadow: 0 0 10px rgba(139, 0, 0, 0.2);
 }
 
-/* The Plus/Minus Indicator */
-.unit-toggle::after {
-  content: '+';
-  color: #d4af37;
-  font-weight: bold;
+/* Arrow indicator */
+.lesson-btn::after {
+  content: '▼';
+  font-size: 0.7rem;
+  transition: transform 0.3s;
 }
 
-.unit-toggle.active::after {
-  content: '−';
+.lesson-btn.active::after {
+  transform: rotate(180deg);
 }
 
-/* Hidden Content Area */
-.unit-content {
-  display: none; /* Hidden by default */
-  background: #0a0a0a;
-  padding: 10px;
-  border-left: 2px solid #8b0000;
-  margin-top: 2px;
+/* Activity List (Hidden by default) */
+.activity-list {
+  display: none;
+  background: #050505;
+  margin-top: -2px;
+  border: 1px solid #333;
+  border-top: none;
+  border-left: 3px solid #8b0000; /* Maroon accent */
   border-radius: 0 0 6px 6px;
+  padding: 5px 0;
 }
 
-.unit-content.show {
+.activity-list.show {
   display: block;
 }
 
-/* Activity Links inside lessons */
-.unit-content a {
-  background: transparent !important;
-  border: none !important;
-  margin: 5px 0 !important;
-  padding: 8px 15px !important;
-  font-size: 0.85rem;
+/* Activity Links */
+.activity-list a {
+  display: block;
+  padding: 10px 20px;
   color: #bbb !important;
+  text-decoration: none;
+  font-size: 0.9rem;
+  background: transparent !important; /* Overrides previous card styles */
 }
 
-.unit-content a:hover {
-  color: #d4af37 !important;
-  text-decoration: underline;
+.activity-list a:hover {
+  color: white !important;
+  background: rgba(139, 0, 0, 0.1) !important;
+  padding-left: 25px; /* Slight indent on hover */
 }
 
