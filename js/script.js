@@ -112,15 +112,26 @@ window.addEventListener("resize", initResponsive);
 document.addEventListener("DOMContentLoaded", loadSidebar);
 
 // ===============================
-// COURSE HUB DRILL-DOWN
+// LESSON TOGGLE LOGIC
 // ===============================
-function toggleElement(id) {
-  const content = document.getElementById(id);
-  const button = content.previousElementSibling;
+function toggleLessons(id) {
+  const list = document.getElementById(id);
+  const btn = list.previousElementSibling;
 
-  // Toggle the content visibility
-  content.classList.toggle("show");
-  
-  // Toggle the active class on the button for the +/- icon
-  button.classList.toggle("active");
+  // Check if it's already open
+  const isOpen = list.classList.contains("show");
+
+  // Close all other activity lists (Optional: makes it like an accordion)
+  /* document.querySelectorAll('.activity-list').forEach(el => el.classList.remove('show'));
+  document.querySelectorAll('.lesson-btn').forEach(el => el.classList.remove('active'));
+  */
+
+  // Toggle this specific list
+  if (isOpen) {
+    list.classList.remove("show");
+    btn.classList.remove("active");
+  } else {
+    list.classList.add("show");
+    btn.classList.add("active");
+  }
 }
