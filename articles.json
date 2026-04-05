@@ -6,9 +6,8 @@
     "icon": "design-process.png",
     "articleUrl": "https://instructional-resources.pltw.org/PLTW_High_School/General_Student_Resources/Exports/Design_Process/index.html#/lessons/s9BIEsoAXNK53fdxjdoFWolWQlursyb-",
     "podcastUrl": "#",
-    "videoUrl": "#",
+    "videoUrl": "#" 
   },
-
   {
     "id": "writing-design-brief",
     "title": "Writing a Design Brief",
@@ -16,46 +15,15 @@
     "icon": "writing-design-brief.png",
     "articleUrl": "https://instructional-resources.pltw.org/PLTW_High_School/General_Student_Resources/Exports/ENG_Writing_a_Design_Brief/index.html#/lessons/kl0FsJc6tHmQJ3afG1w8CNVJ--hYpx0_",
     "podcastUrl": "#",
-    "videoUrl": "#",
+    "videoUrl": "#"
   },
-
-    {
+  {
     "id": "brainstorming-solutions",
     "title": "Brainstorming Solutions",
     "category": "Problem Solving & Critical Thinking",
     "icon": "brainstorming-solutions.png",
     "articleUrl": "https://instructional-resources.pltw.org/PLTW_High_School/General_Student_Resources/Exports/Brainstorming_Solutions/index.html#/lessons/i1_yq0cCEoUsSdlYHCQFmupVVpiQtaHv",
     "podcastUrl": "#",
-    "videoUrl": "#",
-  },
-
-    {
-    "id": "decision-matrix",
-    "title": "Decision Matrix",
-    "category": "Problem Solving & Critical Thinking",
-    "icon": "decision-matrix.png",
-    "articleUrl": "https://instructional-resources.pltw.org/PLTW_High_School/General_Student_Resources/Exports/ENG_Decision_Matrix/index.html#/lessons/kZgIj1IgPqpCFpx8uogLjDD9aithDhZ4",
-    "podcastUrl": "#",
-    "videoUrl": "#",
-  },
-
-    {
-    "id": "experimental-design",
-    "title": "Experimental Design",
-    "category": "Problem Solving & Critical Thinking",
-    "icon": "exp-design.png",
-    "articleUrl": "https://instructional-resources.pltw.org/PLTW_High_School/General_Student_Resources/Exports/ENG_Experimental_Design/index.html#/lessons/9opIW0OpDvJFp0LP5HFQEWNpDBXFTjg3",
-    "podcastUrl": "#",
-    "videoUrl": "#",
-  },
-
-    {
-    "id": "metacognition",
-    "title": "Metacognition",
-    "category": "Problem Solving & Critical Thinking",
-    "icon": "metacognition.png",
-    "articleUrl": "https://instructional-resources.pltw.org/PLTW_High_School/General_Student_Resources/Exports/Metacognition/index.html#/lessons/zPjj3CNLYFq4rXhbRH6GRpk_jg9m3cGL",
-    "podcastUrl": "#",
-    "videoUrl": "#",
-  },
+    "videoUrl": "#"
+  }
 ]
