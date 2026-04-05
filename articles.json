@@ -1,1 +1,29 @@
-
+[
+  {
+    "id": "design-process",
+    "title": "Design Process",
+    "category": "Problem Solving",
+    "articleUrl": "https://example.com/article1",
+    "podcastUrl": "audio/podcast1.mp3",
+    "videoUrl": "https://youtube.com/watch?v=123",
+    "tags": "ied unit 1 engineering flowchart"
+  },
+  {
+    "id": "design-brief",
+    "title": "Writing a Design Brief",
+    "category": "Problem Solving",
+    "articleUrl": "https://example.com/article2",
+    "podcastUrl": "#",
+    "videoUrl": "https://youtube.com/watch?v=456",
+    "tags": "ied documentation constraints criteria"
+  },
+  {
+    "id": "brainstorming",
+    "title": "Brainstorming Solutions",
+    "category": "Problem Solving",
+    "articleUrl": "https://example.com/article3",
+    "podcastUrl": "audio/podcast3.mp3",
+    "videoUrl": "#",
+    "tags": "ied poe teamwork ideas"
+  }
+]
