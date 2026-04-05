@@ -345,3 +345,14 @@ audio {
     height: 35px;
     filter: invert(100%) hue-rotate(180deg) brightness(1.5); /* Makes player look better in dark mode */
 }
+
+/* Category Titles */
+
+.category-title {
+    color: #d4af37; /* Gold */
+    font-family: 'Space Grotesk', sans-serif;
+    margin: 50px 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #333;
+    font-size: 1.5rem;
+}
