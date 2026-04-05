@@ -164,3 +164,35 @@ function filterResources() {
         }
     }
 }
+
+async function loadResources() {
+    const grid = document.getElementById('resource-grid');
+    if (!grid) return; // Only run on the resources page
+
+    try {
+        const response = await fetch('/BEHS-Engineering-Hub/articles.json');
+        const articles = await response.json();
+
+        grid.innerHTML = articles.map(item => `
+            <div class="media-card" data-tags="${item.tags.join(' ')}">
+                <div class="card-image">
+                    <span style="color:#444">${item.category}</span>
+                </div>
+                <h3>${item.title}</h3>
+                <div class="media-links">
+                    <a href="${item.articleUrl}" target="_blank" class="media-btn article">📄 Article</a>
+                    ${item.podcastUrl !== '#' ? `<button class="media-btn podcast" onclick="togglePlayer('audio-${item.id}')">🎙️ Podcast</button>` : ''}
+                    ${item.videoUrl !== '#' ? `<a href="${item.videoUrl}" target="_blank" class="media-btn video">📺 Video</a>` : ''}
+                </div>
+                <div id="audio-${item.id}" class="player-container">
+                    <audio controls><source src="${item.podcastUrl}" type="audio/mpeg"></audio>
+                </div>
+            </div>
+        `).join('');
+    } catch (err) {
+        console.error("Failed to load resources:", err);
+    }
+}
+
+// Call it when the page loads
+document.addEventListener("DOMContentLoaded", loadResources);
