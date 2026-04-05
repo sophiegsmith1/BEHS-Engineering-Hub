@@ -164,25 +164,3 @@ function filterResources() {
         }
     }
 }
-
-// ===============================
-// LOAD GLOBAL HEAD
-// ===============================
-async function loadHead() {
-  try {
-    const res = await fetch(`${BASE}/components/head.html`);
-    if (!res.ok) throw new Error(`Head failed: ${res.status}`);
-    const html = await res.text();
-    
-    // We append the content to the existing head
-    document.head.insertAdjacentHTML('beforeend', html);
-  } catch (err) {
-    console.error("Global Head Error:", err);
-  }
-}
-
-// Update your DOMContentLoaded listener at the bottom of script.js to include loadHead:
-document.addEventListener("DOMContentLoaded", () => {
-  loadHead();     // New!
-  loadSidebar();  // Existing
-});
