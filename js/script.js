@@ -135,3 +135,16 @@ function toggleLessons(id) {
     btn.classList.add("active");
   }
 }
+
+// media player function
+function togglePlayer(id) {
+    const player = document.getElementById(id);
+    
+    // Close all other players first (optional)
+    document.querySelectorAll('.player-container').forEach(el => {
+        if (el.id !== id) el.classList.remove('show');
+    });
+
+    // Toggle the clicked one
+    player.classList.toggle('show');
+}
