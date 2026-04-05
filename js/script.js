@@ -174,13 +174,19 @@ async function loadResources() {
     if (!grid) return; // Only run on the resources page
 
     try {
-        const response = await fetch('/BEHS-Engineering-Hub/articles.json');
+        // Using the BASE variable for consistency
+        const response = await fetch(`${BASE}/articles.json`);
+        
+        if (!response.ok) {
+            throw new Error(`Could not find articles.json (Status: ${response.status})`);
+        }
+
         const articles = await response.json();
 
         grid.innerHTML = articles.map(item => `
-            <div class="media-card" data-tags="${item.tags.join(' ')}">
+            <div class="media-card" data-tags="${item.tags}">
                 <div class="card-image">
-                    <span style="color:#444">${item.category}</span>
+                    <span style="color:#d4af37; font-weight: bold;">${item.category}</span>
                 </div>
                 <h3>${item.title}</h3>
                 <div class="media-links">
@@ -193,8 +199,15 @@ async function loadResources() {
                 </div>
             </div>
         `).join('');
+        
+        console.log("Resources loaded successfully!");
     } catch (err) {
         console.error("Failed to load resources:", err);
+        grid.innerHTML = `<div style="color:red; padding:20px;">
+            <h3>Database Load Error</h3>
+            <p>${err.message}</p>
+            <p>Check if articles.json is in your root folder and named correctly.</p>
+        </div>`;
     }
 }
 
