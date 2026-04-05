@@ -1,137 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <title>Photo Gallery | BEHS Engineering</title>
-    <link rel="stylesheet" href="/BEHS-Engineering-Hub/css/style.css">
-    <script src="/BEHS-Engineering-Hub/js/script.js"></script>
-    
-    <style>
-        /* Gallery Specific Enhancements */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
+  <title>Photo Gallery</title>
+  <!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        .photo-card {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            aspect-ratio: 4 / 3;
-            cursor: pointer;
-            transition: var(--transition);
-        }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .photo-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .photo-card:hover img {
-            transform: scale(1.1);
-        }
-
-        .photo-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            padding: 20px;
-            color: white;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .photo-card:hover .photo-overlay {
-            opacity: 1;
-        }
-
-        /* Year Folder Style */
-        .year-folder {
-            border-top: 4px solid var(--gold);
-        }
-    </style>
+<link rel="stylesheet" href="/BEHS-Engineering-Hub/css/style.css">
 </head>
 
 <body>
 
 <div class="menu-toggle" id="menu-toggle">☰</div>
 
+<!-- SIDEBAR -->
 <div id="sidebar-container"></div>
 
-<main class="main">
-    <nav class="breadcrumb">
-        <a href="index.html">Home</a> / <span>Gallery</span>
-    </nav>
+<!-- MAIN -->
+<div class="main">
+  <h1>Photos</h1>
+  <div class="subtitle">Course Hub</div>
 
-    <header>
-        <h1>Engineering Gallery</h1>
-        <p class="subtitle">Documentation of student projects, competitions, and lab builds.</p>
-    </header>
+  <div class="grid">
 
-    <div class="grid">
-        <div class="card year-folder">
-            <h3>2026-2027 School Year</h3>
-            <p>Current projects and live documentation.</p>
-            <a href="#current" class="media-btn article">View Current Album</a>
-        </div>
-
-        <div class="card">
-            <h3>2025-2026 School Year</h3>
-            <p>Archive of last year's VEX Robotics and Bridge builds.</p>
-            <a href="#archive-25" class="media-btn article">View Archive</a>
-        </div>
+    <div class="card">
+      <h3>Photos by Year</h3>
+      <a href="#">2026-2027 School Year</a>
+      <a href="#">2025-2026 School Year</a>
     </div>
 
-    <h2 class="category-title" id="current">Recent Highlights</h2>
-
-    <div class="gallery-grid">
-        <div class="photo-card" onclick="openLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1581092334651-ddf26d9a1930?auto=format&fit=crop&q=80&w=800" alt="Robotics Build">
-            <div class="photo-overlay">
-                <h4>VEX Chassis Build</h4>
-                <p>Unit 2.1 - Structural Design</p>
-            </div>
-        </div>
-
-        <div class="photo-card" onclick="openLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80&w=800" alt="3D Printing Lab">
-            <div class="photo-overlay">
-                <h4>3D Printing Lab</h4>
-                <p>Rapid Prototyping Workshop</p>
-            </div>
-        </div>
-
-        <div class="photo-card" onclick="openLightbox(this)">
-            <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&q=80&w=800" alt="Circuit Testing">
-            <div class="photo-overlay">
-                <h4>Circuit Analysis</h4>
-                <p>Testing Ohm's Law in POE</p>
-            </div>
-        </div>
-    </div>
-</main>
-
-<div id="lightbox" style="display:none; position:fixed; z-index:10000; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); align-items:center; justify-content:center; cursor:zoom-out;" onclick="this.style.display='none'">
-    <img id="lightbox-img" src="" style="max-width:90%; max-height:80%; border: 3px solid var(--gold); border-radius:8px;">
-    <div id="lightbox-caption" style="position:absolute; bottom:5%; color:white; font-family:'Space Grotesk'; font-size:1.2rem;"></div>
+  </div>
 </div>
 
-<script>
-    function openLightbox(element) {
-        const img = element.querySelector('img').src;
-        const caption = element.querySelector('h4').innerText;
-        
-        document.getElementById('lightbox-img').src = img;
-        document.getElementById('lightbox-caption').innerText = caption;
-        document.getElementById('lightbox').style.display = 'flex';
-    }
-</script>
+<script src="/BEHS-Engineering-Hub/js/script.js"></script>
 
 </body>
 </html>
