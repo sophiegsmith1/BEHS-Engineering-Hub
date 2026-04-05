@@ -33,6 +33,41 @@
             border-bottom: 1px solid #333;
             padding-bottom: 5px;
         }
+        /* The small red category text */
+.category-label {
+    color: #ff4d4d; /* Engineering Red */
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.media-card {
+    position: relative; /* Needed for the absolute label */
+    padding-top: 40px; /* Space for the label */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Small Icon Styling */
+.card-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 10px;
+    filter: grayscale(100%) brightness(1.2); /* Makes icons look uniform */
+}
+
+.card-image {
+    background: transparent !important;
+    border: none !important;
+    height: auto !important;
+}
     </style>
 </head>
 <body>
