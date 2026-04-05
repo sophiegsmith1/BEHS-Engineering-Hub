@@ -25,36 +25,28 @@
   <div class="subtitle">Course Hub</div>
 
   <div class="grid">
-    <div class="card course-card">
-      <h3>Unit 1: Design Process</h3>
-      
-      <div class="unit-section">
-        <button class="unit-toggle" onclick="toggleElement('u1-l1')">Lesson 1.1: Design Basics</button>
-        <div id="u1-l1" class="unit-content">
-          <a href="activities/1-1-1.html">Activity 1.1.1: Sketching</a>
-          <a href="activities/1-1-2.html">Activity 1.1.2: Measurement</a>
-        </div>
-      </div>
-
-      <div class="unit-section">
-        <button class="unit-toggle" onclick="toggleElement('u1-l2')">Lesson 1.2: Modeling</button>
-        <div id="u1-l2" class="unit-content">
-          <a href="#">Activity 1.2.1: Fusion 360 Intro</a>
-          <a href="#">Activity 1.2.2: Constraints</a>
-        </div>
-      </div>
+   <div class="card">
+  <h3>Unit 1: Design Process</h3>
+  
+  <div class="lesson-container">
+    <button class="lesson-btn" onclick="toggleLessons('l1-1')">
+      Lesson 1.1: Design Basics
+    </button>
+    <div id="l1-1" class="activity-list">
+      <a href="#">Activity 1.1.1: Sketching</a>
+      <a href="#">Activity 1.1.2: Measurement</a>
+      <a href="#">Activity 1.1.3: Portfolio Setup</a>
     </div>
+  </div>
 
-    <div class="card course-card">
-      <h3>Unit 2: Technical Sketching</h3>
-      <div class="unit-section">
-        <button class="unit-toggle" onclick="toggleElement('u2-l1')">Lesson 2.1: Isometric</button>
-        <div id="u2-l1" class="unit-content">
-          <a href="#">Activity 2.1.1: Cubes</a>
-        </div>
-      </div>
+  <div class="lesson-container">
+    <button class="lesson-btn" onclick="toggleLessons('l1-2')">
+      Lesson 1.2: Modeling
+    </button>
+    <div id="l1-2" class="activity-list">
+      <a href="#">Activity 1.2.1: Fusion 360 Intro</a>
+      <a href="#">Activity 1.2.2: Constraints</a>
     </div>
-
   </div>
 </div>
 
