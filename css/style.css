@@ -395,3 +395,21 @@ audio {
     height: 100%;
     object-fit: cover;
 }
+
+/* Add this to a new CSS file for your games */
+.game-container {
+    border: 2px solid #8b0000; /* BEHS Red */
+    background: #1a1a1a;
+    font-family: 'Space Grotesk', sans-serif;
+    color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.binary-cell {
+    width: 40px;
+    height: 40px;
+    background: #222;
+    border: 1px solid #444;
+    color: #00ff00; /* Classic "Matrix" Green for Binary */
+}
