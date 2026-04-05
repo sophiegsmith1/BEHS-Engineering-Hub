@@ -1,43 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Frequently Used Documents</title>
-  <!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <title>Article Resources | BEHS Engineering</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link rel="stylesheet" href="/BEHS-Engineering-Hub/css/style.css">
+  <link rel="stylesheet" href="/BEHS-Engineering-Hub/css/style.css">
 </head>
 
 <body>
 
 <div class="menu-toggle" id="menu-toggle">☰</div>
-
-<!-- SIDEBAR -->
 <div id="sidebar-container"></div>
 
-<!-- MAIN -->
 <div class="main">
-  <h1>Need to Update</h1>
-  <div class="subtitle">Frequently Used Documents</div>
+  <nav class="breadcrumb">
+    <a href="/BEHS-Engineering-Hub/index.html">Home</a> / <span>Article Resources</span>
+  </nav>
+
+  <h1>PLTW Article Resources</h1>
+  <div class="subtitle">Multimedia supplements for the PLTW Curriculum.</div>
 
   <div class="grid">
 
-    <div class="card">
-      <h3>Resources</h3>
-      <a href="#">Resource 1</a>
-      <a href="#">Resource 2</a>
-      <a href="#">Resource 3</a>
-      <a href="#">Resource 4</a>
+    <div class="media-card">
+      <div class="media-type">IED / Unit 1</div>
+      <h3>The History of Design</h3>
+      <p>An overview of how design has evolved from the industrial revolution to modern CAD.</p>
+      
+      <div class="media-links">
+        <a href="ARTICLE_URL" target="_blank" class="media-btn article">📄 Read Article</a>
+        <button class="media-btn podcast" onclick="togglePlayer('audio-1')">🎙️ Play Podcast</button>
+      </div>
+
+      <div id="audio-1" class="player-container">
+        <audio controls>
+          <source src="YOUR_PODCAST_FILE.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+    </div>
+
+    <div class="media-card">
+      <div class="media-type">POE / Unit 2</div>
+      <h3>Simple Machines & Mechanisms</h3>
+      <p>Deep dive into mechanical advantage and complex gear trains.</p>
+      
+      <div class="media-links">
+        <a href="ARTICLE_URL" target="_blank" class="media-btn article">📄 Read Article</a>
+        <a href="YOUTUBE_URL" target="_blank" class="media-btn video">📺 Watch Video</a>
+      </div>
+    </div>
+
+    <div class="media-card">
+      <div class="media-type">DE / Unit 1</div>
+      <h3>Logic Gates & Boolean Algebra</h3>
+      <p>The foundation of digital electronics and binary logic.</p>
+      
+      <div class="media-links">
+        <a href="#" target="_blank" class="media-btn article">📄 Article</a>
+        <button class="media-btn podcast" onclick="togglePlayer('audio-2')">🎙️ Podcast</button>
+        <a href="#" target="_blank" class="media-btn video">📺 Video</a>
+      </div>
+
+      <div id="audio-2" class="player-container">
+        <audio controls>
+          <source src="LOGIC_GATES_PODCAST.mp3" type="audio/mpeg">
+        </audio>
+      </div>
     </div>
 
   </div>
 </div>
 
 <script src="/BEHS-Engineering-Hub/js/script.js"></script>
-
 </body>
 </html>
