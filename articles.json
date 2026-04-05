@@ -2,28 +2,703 @@
   {
     "id": "design-process",
     "title": "Design Process",
-    "category": "Problem Solving",
-    "articleUrl": "https://example.com/article1",
-    "podcastUrl": "audio/podcast1.mp3",
-    "videoUrl": "https://youtube.com/watch?v=123",
-    "tags": "ied unit 1 engineering flowchart"
+    "category": "Problem Solving & Critical Thinking",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "ied unit 1 engineering cycle steps"
   },
   {
     "id": "design-brief",
     "title": "Writing a Design Brief",
-    "category": "Problem Solving",
-    "articleUrl": "https://example.com/article2",
+    "category": "Problem Solving & Critical Thinking",
+    "articleUrl": "#",
     "podcastUrl": "#",
-    "videoUrl": "https://youtube.com/watch?v=456",
-    "tags": "ied documentation constraints criteria"
+    "videoUrl": "#",
+    "tags": "constraints criteria documentation client"
   },
   {
     "id": "brainstorming",
     "title": "Brainstorming Solutions",
-    "category": "Problem Solving",
-    "articleUrl": "https://example.com/article3",
-    "podcastUrl": "audio/podcast3.mp3",
+    "category": "Problem Solving & Critical Thinking",
+    "articleUrl": "#",
+    "podcastUrl": "#",
     "videoUrl": "#",
-    "tags": "ied poe teamwork ideas"
+    "tags": "ideas teamwork sketches rules"
+  },
+  {
+    "id": "decision-matrix",
+    "title": "Decision Matrix",
+    "category": "Problem Solving & Critical Thinking",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "evaluating weighted objective ranking"
+  },
+  {
+    "id": "experimental-design",
+    "title": "Experimental Design",
+    "category": "Problem Solving & Critical Thinking",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "science testing variables hypothesis"
+  },
+  {
+    "id": "metacognition",
+    "title": "Metacognition",
+    "category": "Problem Solving & Critical Thinking",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "learning thinking mindset reflection"
+  },
+  {
+    "id": "3d-printing",
+    "title": "3D Printing Process",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "additive manufacturing slicer stl cura"
+  },
+  {
+    "id": "calibrating-calipers",
+    "title": "Calibrating Calipers",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "measurement precision zeroing maintenance"
+  },
+  {
+    "id": "dial-caliper",
+    "title": "Dial Caliper",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "measurement inches metric reading"
+  },
+  {
+    "id": "vernier-analysis",
+    "title": "Vernier Graphical Analysis",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "data graphing software logger pro"
+  },
+  {
+    "id": "vernier-sensors",
+    "title": "Vernier Sensors and Probes",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "probes science lab data collection"
+  },
+  {
+    "id": "microscope-use",
+    "title": "How to Use a Microscope",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "optics lab biology zoom slides"
+  },
+  {
+    "id": "multimeter-operation",
+    "title": "Multimeter Operation",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "voltage current resistance electronics circuits"
+  },
+  {
+    "id": "onshape-overview",
+    "title": "Onshape Overview",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "cad 3d modeling cloud browser"
+  },
+  {
+    "id": "tinkercad-circuits",
+    "title": "Tinkercad Circuit Tips",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "arduino simulation electronics breadboard"
+  },
+  {
+    "id": "excel-scatterplots",
+    "title": "Scatterplots and Trendlines in Microsoft Excel",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "spreadsheets statistics data r-squared"
+  },
+  {
+    "id": "tape-measure",
+    "title": "Using a Tape Measure",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "construction fractions measurement imperial"
+  },
+  {
+    "id": "vex-brain",
+    "title": "VEX V5 Brain",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "robotics hardware firmware ports"
+  },
+  {
+    "id": "vex-battery",
+    "title": "VEX V5 Battery",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "power charging lithium smart"
+  },
+  {
+    "id": "vex-io",
+    "title": "VEX V5 Output and Input Devices",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "sensors motors robotics digital analog"
+  },
+  {
+    "id": "cord-management",
+    "title": "Cord Management",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "organization safety workspace clean"
+  },
+  {
+    "id": "vexcode-help",
+    "title": "VEXcode V5 Help",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "programming c++ blocks python"
+  },
+  {
+    "id": "vex-troubleshooting",
+    "title": "VEX V5 Troubleshooting",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "robotics fix error radio controller"
+  },
+  {
+    "id": "vex-parts",
+    "title": "VEX Parts",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "hardware structural components nuts bolts"
+  },
+  {
+    "id": "vex-guides",
+    "title": "VEX V5 Support Guides",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "documentation resources help manual"
+  },
+  {
+    "id": "python-ref",
+    "title": "Python Reference",
+    "category": "Tools and Technology",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "programming coding syntax functions"
+  },
+  {
+    "id": "box-plots",
+    "title": "Box Plots and Distribution",
+    "category": "Engineering Math and Science",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "statistics quartiles data outliers"
+  },
+  {
+    "id": "descriptive-stats",
+    "title": "Descriptive Statistics",
+    "category": "Engineering Math and Science",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "mean median mode range"
+  },
+  {
+    "id": "electricity",
+    "title": "Electricity",
+    "category": "Engineering Math and Science",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "physics circuit voltage ohm's law"
+  },
+  {
+    "id": "inferential-stats",
+    "title": "Inferential Statistics",
+    "category": "Engineering Math and Science",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "data analysis probability samples"
+  },
+  {
+    "id": "comparative-inference",
+    "title": "Informal Comparative Inference",
+    "category": "Engineering Math and Science",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "statistics logic math comparing"
+  },
+  {
+    "id": "mass-weight-density",
+    "title": "Mass, Weight, and Density",
+    "category": "Engineering Math and Science",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "physics properties volume gravity"
+  },
+  {
+    "id": "notation",
+    "title": "Scientific and Engineering Notation",
+    "category": "Engineering Math and Science",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "math powers of ten exponents"
+  },
+  {
+    "id": "simple-machines",
+    "title": "Simple Machines",
+    "category": "Engineering Math and Science",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "levers pulleys gears mechanical advantage incline"
+  },
+  {
+    "id": "standard-deviation",
+    "title": "Standard Deviation",
+    "category": "Engineering Math and Science",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "statistics variance spread sigma"
+  },
+  {
+    "id": "empirical-rule",
+    "title": "The Empirical Rule",
+    "category": "Engineering Math and Science",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "statistics normal distribution 68 95 99.7"
+  },
+  {
+    "id": "unit-conversion",
+    "title": "Unit Conversion and Dimensional Analysis",
+    "category": "Engineering Math and Science",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "math units metric imperial factor label"
+  },
+  {
+    "id": "modeling-overview",
+    "title": "Modeling Overview",
+    "category": "Modeling",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "prototyping physical virtual models"
+  },
+  {
+    "id": "math-modeling",
+    "title": "Mathematical Modeling",
+    "category": "Modeling",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "equations functions data prediction"
+  },
+  {
+    "id": "data-visualization",
+    "title": "Data Visualization",
+    "category": "Modeling",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "graphs charts infographics"
+  },
+  {
+    "id": "concept-sketching",
+    "title": "Concept Sketching",
+    "category": "Modeling",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "drawing ideas rapid prototyping"
+  },
+  {
+    "id": "pictorial-rep",
+    "title": "Pictorial Representation",
+    "category": "Modeling",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "drawing 3d views sketching"
+  },
+  {
+    "id": "isometric-sketching",
+    "title": "Isometric Sketching",
+    "category": "Modeling",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "3d drawing 30 degrees grid"
+  },
+  {
+    "id": "isometric-orientation",
+    "title": "Isometric View Orientation",
+    "category": "Modeling",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "front top side perspective"
+  },
+  {
+    "id": "isometric-circles",
+    "title": "Sketching Isometric Circles",
+    "category": "Modeling",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "ellipses holes cylinders drawing"
+  },
+  {
+    "id": "sectional-views",
+    "title": "Sectional Views",
+    "category": "Modeling",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "cutaway internal details drafting"
+  },
+  {
+    "id": "multiview-sketching",
+    "title": "Multiview Sketching",
+    "category": "Modeling",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "orthographic front top right side"
+  },
+  {
+    "id": "dimensioning",
+    "title": "Dimensioning Guidelines",
+    "category": "Modeling",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "drafting rules measurement annotations"
+  },
+  {
+    "id": "design-elements",
+    "title": "Design Elements and Principles",
+    "category": "Engineering Design and Applications",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "aesthetics balance color form"
+  },
+  {
+    "id": "optimization",
+    "title": "Optimization",
+    "category": "Engineering Design and Applications",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "efficiency trade-offs improvement"
+  },
+  {
+    "id": "sustainability",
+    "title": "Sustainability",
+    "category": "Engineering Design and Applications",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "environment green life cycle"
+  },
+  {
+    "id": "comp-thinking",
+    "title": "Computational Thinking",
+    "category": "Computational and Systems Thinking",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "algorithms pattern recognition logic"
+  },
+  {
+    "id": "systems-thinking",
+    "title": "Systems Thinking",
+    "category": "Computational and Systems Thinking",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "inputs outputs feedback loops"
+  },
+  {
+    "id": "flowcharts",
+    "title": "Flowcharts",
+    "category": "Computational and Systems Thinking",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "logic mapping symbols process"
+  },
+  {
+    "id": "effective-research",
+    "title": "Effective Research",
+    "category": "Professionalism and Ethics",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "google search academic library"
+  },
+  {
+    "id": "info-credibility",
+    "title": "Information Credibility",
+    "category": "Professionalism and Ethics",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "bias sources reliability fact check"
+  },
+  {
+    "id": "citing-sources",
+    "title": "Citing Sources",
+    "category": "Professionalism and Ethics",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "apa mla bibliography plagiarism"
+  },
+  {
+    "id": "principles-ethics",
+    "title": "Principles of Ethics",
+    "category": "Professionalism and Ethics",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "morals philosophy right wrong"
+  },
+  {
+    "id": "professional-ethics",
+    "title": "Professional Ethics",
+    "category": "Professionalism and Ethics",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "workplace nspe code of conduct"
+  },
+  {
+    "id": "peer-feedback",
+    "title": "Providing Peer Feedback",
+    "category": "Professionalism and Ethics",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "collaboration critique communication"
+  },
+  {
+    "id": "technical-reading",
+    "title": "Technical Reading",
+    "category": "Professionalism and Ethics",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "manuals literacy complex info"
+  },
+  {
+    "id": "active-listening",
+    "title": "Active Learning and Interpreting",
+    "category": "Communication and Collaboration",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "listening teamwork understanding"
+  },
+  {
+    "id": "building-presentations",
+    "title": "Building Effective Presentations",
+    "category": "Communication and Collaboration",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "slides powerpoint design"
+  },
+  {
+    "id": "delivering-presentations",
+    "title": "Delivering Effective Presentations",
+    "category": "Communication and Collaboration",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "public speaking speech confidence"
+  },
+  {
+    "id": "notebook",
+    "title": "Engineering Notebook",
+    "category": "Communication and Collaboration",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "documentation record keeping legal"
+  },
+  {
+    "id": "portfolio",
+    "title": "Project Portfolio",
+    "category": "Communication and Collaboration",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "showcase career documentation"
+  },
+  {
+    "id": "technical-writing",
+    "title": "Technical Writing",
+    "category": "Communication and Collaboration",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "reports clarity documentation"
+  },
+  {
+    "id": "collaboration",
+    "title": "Collaboration",
+    "category": "Communication and Collaboration",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "teamwork skills group projects"
+  },
+  {
+    "id": "conflict-resolution",
+    "title": "Conflict Resolution",
+    "category": "Communication and Collaboration",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "mediation teamwork solving problems"
+  },
+  {
+    "id": "pair-programming",
+    "title": "Pair Programming",
+    "category": "Communication and Collaboration",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "coding software teamwork"
+  },
+  {
+    "id": "project-management",
+    "title": "Project Management",
+    "category": "Project Management and Career Learning",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "planning organization timeline"
+  },
+  {
+    "id": "gantt-charts",
+    "title": "Gantt Charts",
+    "category": "Project Management and Career Learning",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "schedule timeline milestones"
+  },
+  {
+    "id": "agile-scrum",
+    "title": "Agile Development and Scrum Workflow",
+    "category": "Project Management and Career Learning",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "sprints software teamwork process"
+  },
+  {
+    "id": "careers-eng",
+    "title": "Careers in Engineering",
+    "category": "Project Management and Career Learning",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "jobs civil mechanical electrical"
+  },
+  {
+    "id": "becoming-eng",
+    "title": "Becoming an Engineer",
+    "category": "Project Management and Career Learning",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "college education license pe"
+  },
+  {
+    "id": "prof-comm",
+    "title": "Professional Communication",
+    "category": "Project Management and Career Learning",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "email workplace etiquette"
+  },
+  {
+    "id": "prof-net",
+    "title": "Professional Networking",
+    "category": "Project Management and Career Learning",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "linkedin connections mentors"
+  },
+  {
+    "id": "prof-app",
+    "title": "Professional Application",
+    "category": "Project Management and Career Learning",
+    "articleUrl": "#",
+    "podcastUrl": "#",
+    "videoUrl": "#",
+    "tags": "resume interview jobs"
   }
 ]
