@@ -237,3 +237,11 @@ h1, h2, h3 {
   padding-left: 25px; /* Slight indent on hover */
 }
 
+/* Adds a small 'external link' arrow after links that open in a new tab */
+.activity-list a[target="_blank"]::after {
+  content: ' ↗';
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+
