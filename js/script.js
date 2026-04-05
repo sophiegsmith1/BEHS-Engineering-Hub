@@ -148,3 +148,19 @@ function togglePlayer(id) {
     // Toggle the clicked one
     player.classList.toggle('show');
 }
+
+//search filter
+
+function filterResources() {
+    let input = document.getElementById('resourceSearch').value.toLowerCase();
+    let cards = document.getElementsByClassName('media-card');
+    
+    for (let i = 0; i < cards.length; i++) {
+        let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+        if (title.includes(input)) {
+            cards[i].style.display = "";
+        } else {
+            cards[i].style.display = "none";
+        }
+    }
+}
