@@ -1,43 +1,55 @@
 /**
  * BEHS ENGINEERING HUB - CORE SCRIPT
- * Handles Head/Sidebar injection and UI interactions.
+ * Version 2.0: Optimized for Subfolder Navigation & Performance
  */
 
-const BASE = "/BEHS-Engineering-Hub";
+// 1. SMART PATHING: Automatically handles GitHub Pages vs Localhost
+const BASE = window.location.hostname.includes("github.io") 
+    ? "/BEHS-Engineering-Hub" 
+    : "";
 
-// --- 1. COMPONENT INJECTION ---
+// --- 2. COMPONENT INJECTION ---
 async function injectComponent(id, path, isHead = false) {
     try {
         const response = await fetch(`${BASE}${path}`);
-        if (!response.ok) throw new Error(`Failed to load ${path}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}: ${path}`);
         const html = await response.text();
         
         if (isHead) {
+            // Inserts fonts/meta tags before other styles to prevent "flashing"
             document.head.insertAdjacentHTML('afterbegin', html);
         } else {
             const container = document.getElementById(id);
             if (container) {
                 container.innerHTML = html;
-                if (id === "sidebar-container") initSidebarLogic();
+                initSidebarLogic();
             }
         }
     } catch (err) {
-        console.error("Injection Error:", err);
+        console.error("Critical Injection Error:", err);
     }
 }
 
-// --- 2. SIDEBAR & UI LOGIC ---
+// --- 3. SIDEBAR & UI LOGIC ---
 function initSidebarLogic() {
-    // Menu Dropdowns
-    document.querySelectorAll(".menu-title").forEach(title => {
-        title.onclick = () => title.nextElementSibling?.classList.toggle("open");
-    });
-
-    // Mobile Toggle
-    const toggleBtn = document.getElementById("menu-toggle");
     const sidebar = document.getElementById("sidebar");
+    const toggleBtn = document.getElementById("menu-toggle");
     const main = document.querySelector(".main");
 
+    // Menu Dropdowns (Accordion style)
+    document.querySelectorAll(".menu-title").forEach(title => {
+        title.onclick = (e) => {
+            const submenu = title.nextElementSibling;
+            if (submenu) {
+                const isOpen = submenu.classList.contains("open");
+                // Close other open submenus for a cleaner look (Optional)
+                // document.querySelectorAll('.submenu').forEach(s => s.classList.remove('open'));
+                submenu.classList.toggle("open", !isOpen);
+            }
+        };
+    });
+
+    // Mobile/Desktop Toggle
     if (toggleBtn && sidebar) {
         toggleBtn.onclick = () => {
             sidebar.classList.toggle("closed");
@@ -45,34 +57,59 @@ function initSidebarLogic() {
         };
     }
 
-    // Active Link Highlight
-    const currentPath = window.location.pathname;
+    // Smart Active Link Highlight
+    const currentFile = window.location.pathname.split("/").pop() || "index.html";
     document.querySelectorAll(".submenu a").forEach(link => {
-        if (currentPath.endsWith(link.getAttribute("href"))) {
+        const linkHref = link.getAttribute("href").split("/").pop();
+        if (currentFile === linkHref) {
             link.classList.add("active");
-            link.parentElement.classList.add("open");
+            link.closest(".submenu")?.classList.add("open");
         }
     });
 }
 
-// --- 3. UTILITIES (Search, Toggles) ---
+// --- 4. UTILITIES ---
+
+// Search functionality with "Clear" logic
 window.searchMenu = (query) => {
-    const lowQuery = query.toLowerCase();
-    document.querySelectorAll(".submenu a").forEach(link => {
-        const match = link.textContent.toLowerCase().includes(lowQuery);
-        link.style.display = match ? "block" : "none";
-        if (match && lowQuery !== "") link.parentElement.classList.add("open");
+    const lowQuery = query.toLowerCase().trim();
+    document.querySelectorAll(".submenu").forEach(submenu => {
+        let hasMatch = false;
+        submenu.querySelectorAll("a").forEach(link => {
+            const match = link.textContent.toLowerCase().includes(lowQuery);
+            link.style.display = match ? "block" : "none";
+            if (match) hasMatch = true;
+        });
+
+        // Open/Close groups based on search results
+        if (lowQuery !== "") {
+            submenu.classList.toggle("open", hasMatch);
+        }
     });
 };
 
+// Lesson Accordion Toggle
 window.toggleLessons = (id) => {
     const list = document.getElementById(id);
-    list?.classList.toggle("show");
-    list?.previousElementSibling?.classList.toggle("active");
+    if (!list) return;
+
+    // Optional: Close other open lessons in the same unit
+    // document.querySelectorAll('.activity-list.show').forEach(el => {
+    //    if(el !== list) el.classList.remove('show');
+    // });
+
+    list.classList.toggle("show");
+    list.previousElementSibling?.classList.toggle("active");
 };
 
-// --- INITIALIZE ---
-document.addEventListener("DOMContentLoaded", () => {
-    injectComponent(null, "/components/head.html", true);      // Load Head
-    injectComponent("sidebar-container", "/components/sidebar.html"); // Load Sidebar
-});
+// --- 5. INITIALIZE ---
+// Run immediately if DOM is already ready, otherwise wait
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+        injectComponent(null, "/components/head.html", true);
+        injectComponent("sidebar-container", "/components/sidebar.html");
+    });
+} else {
+    injectComponent(null, "/components/head.html", true);
+    injectComponent("sidebar-container", "/components/sidebar.html");
+}
