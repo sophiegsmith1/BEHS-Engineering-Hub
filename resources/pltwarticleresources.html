@@ -1,3 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLTW Article Resources | BEHS Engineering</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/BEHS-Engineering-Hub/css/style.css">
+
+    <style>
+        /* Quick fix in case the external CSS isn't loading yet */
+        .category-title {
+            color: #d4af37;
+            font-family: 'Space Grotesk', sans-serif;
+            margin: 50px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+            font-size: 1.8rem;
+        }
+        .search-container {
+            margin-bottom: 40px;
+        }
+        #resourceSearch {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #444;
+            background: #222;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+    <div id="sidebar-container"></div>
+
+    <div class="main">
+        <nav class="breadcrumb">
+            <a href="/BEHS-Engineering-Hub/index.html">Home</a> / <span>Article Resources</span>
+        </nav>
+
+        <h1>PLTW Article Resources</h1>
+        <p class="subtitle">Multimedia supplements for the PLTW Curriculum.</p>
+
+        <div class="search-container">
+            <input type="text" id="resourceSearch" onkeyup="filterResources()" placeholder="Search for an article, tool, or concept...">
+        </div>
+
 <h2 class="category-title">Problem Solving & Critical Thinking</h2>
 <div class="grid">
 
@@ -924,3 +977,7 @@
   </div>
 
 </div>
+
+    <script src="/BEHS-Engineering-Hub/js/script.js"></script>
+</body>
+</html>
