@@ -162,3 +162,73 @@ h1, h2, h3 {
   .menu-toggle { display: block; }
   .main { margin-left: 0; padding: 60px 20px 20px; }
 }
+
+/* =========================
+   COURSE HUB INTERACTIVITY
+========================= */
+.unit-section {
+  margin-bottom: 10px;
+}
+
+.unit-toggle {
+  width: 100%;
+  text-align: left;
+  background: #1f1f1f;
+  color: #eee;
+  border: 1px solid #333;
+  padding: 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  transition: 0.2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.unit-toggle:hover {
+  background: #2a2a2a;
+  border-color: #8b0000;
+}
+
+/* The Plus/Minus Indicator */
+.unit-toggle::after {
+  content: '+';
+  color: #d4af37;
+  font-weight: bold;
+}
+
+.unit-toggle.active::after {
+  content: '−';
+}
+
+/* Hidden Content Area */
+.unit-content {
+  display: none; /* Hidden by default */
+  background: #0a0a0a;
+  padding: 10px;
+  border-left: 2px solid #8b0000;
+  margin-top: 2px;
+  border-radius: 0 0 6px 6px;
+}
+
+.unit-content.show {
+  display: block;
+}
+
+/* Activity Links inside lessons */
+.unit-content a {
+  background: transparent !important;
+  border: none !important;
+  margin: 5px 0 !important;
+  padding: 8px 15px !important;
+  font-size: 0.85rem;
+  color: #bbb !important;
+}
+
+.unit-content a:hover {
+  color: #d4af37 !important;
+  text-decoration: underline;
+}
+
