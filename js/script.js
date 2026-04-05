@@ -110,3 +110,17 @@ function initResponsive() {
 
 window.addEventListener("resize", initResponsive);
 document.addEventListener("DOMContentLoaded", loadSidebar);
+
+// ===============================
+// COURSE HUB DRILL-DOWN
+// ===============================
+function toggleElement(id) {
+  const content = document.getElementById(id);
+  const button = content.previousElementSibling;
+
+  // Toggle the content visibility
+  content.classList.toggle("show");
+  
+  // Toggle the active class on the button for the +/- icon
+  button.classList.toggle("active");
+}
