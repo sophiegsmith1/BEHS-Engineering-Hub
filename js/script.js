@@ -155,12 +155,16 @@ function filterResources() {
     let input = document.getElementById('resourceSearch').value.toLowerCase();
     let cards = document.getElementsByClassName('media-card');
     
-    for (let i = 0; i < cards.length; i++) {
-        let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
-        if (title.includes(input)) {
-            cards[i].style.display = "";
+    for (let card of cards) {
+        // This gets the title, the category, and the tags we added to the JSON
+        let title = card.querySelector('h3').innerText.toLowerCase();
+        let tags = card.getAttribute('data-tags').toLowerCase();
+        let category = card.querySelector('.card-image span').innerText.toLowerCase();
+        
+        if (title.includes(input) || tags.includes(input) || category.includes(input)) {
+            card.style.display = "";
         } else {
-            cards[i].style.display = "none";
+            card.style.display = "none";
         }
     }
 }
