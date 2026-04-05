@@ -188,19 +188,18 @@ grid.innerHTML = articles.map(item => `
         <div class="category-label">${item.category}</div>
         
         <div class="card-image">
-            <img src="${BASE}/images/icons/default-icon.png" alt="icon" class="card-icon">
+            <img src="${BASE}/images/icons/default-icon.png" class="card-icon" alt="icon">
         </div>
 
         <h3>${item.title}</h3>
 
         <div class="media-links">
             <a href="${item.articleUrl}" target="_blank" class="media-btn article">📄 Article</a>
-            
             ${item.podcastUrl !== '#' ? `<button class="media-btn podcast" onclick="togglePlayer('audio-${item.id}')">🎙️ Podcast</button>` : ''}
             ${item.videoUrl !== '#' ? `<a href="${item.videoUrl}" target="_blank" class="media-btn video">📺 Video</a>` : ''}
         </div>
-
-        <div id="audio-${item.id}" class="player-container">
+        
+        <div id="audio-${item.id}" class="player-container" style="display:none;">
             <audio controls><source src="${item.podcastUrl}" type="audio/mpeg"></audio>
         </div>
     </div>
