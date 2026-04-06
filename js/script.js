@@ -1,10 +1,18 @@
 // ===============================
-// CONFIG
+// 1. CONFIG & STARTUP
 // ===============================
 const BASE = "/BEHS-Engineering-Hub";
 
+document.addEventListener("DOMContentLoaded", () => {
+    // We launch everything at once
+    initSidebarToggle();
+    loadSidebar();
+    loadResources();
+    initResponsive();
+});
+
 // ===============================
-// SIDEBAR INITIALIZATION
+// 2. SIDEBAR & NAVIGATION
 // ===============================
 async function loadSidebar() {
     const container = document.getElementById("sidebar-container");
@@ -12,43 +20,48 @@ async function loadSidebar() {
 
     try {
         const res = await fetch(`${BASE}/components/sidebar.html`);
-        if (!res.ok) throw new Error(`Sidebar fetch failed: ${res.status}`);
-
+        if (!res.ok) throw new Error(`Sidebar Status: ${res.status}`);
         const html = await res.text();
         container.innerHTML = html;
 
-        // Re-attach listeners once HTML is injected
-        initSidebarAccordion();
-        initSidebarToggle();
-    } catch (err) {
-        console.error("Sidebar Error:", err);
-    }
-}
+        // Initialize Accordions (Dropdowns)
+        document.querySelectorAll(".menu-title").forEach(title => {
+            title.onclick = () => {
+                const submenu = title.nextElementSibling;
+                if (submenu) submenu.classList.toggle("open");
+            };
+        });
 
-function initSidebarAccordion() {
-    document.querySelectorAll(".menu-title").forEach(title => {
-        title.onclick = () => {
-            const submenu = title.nextElementSibling;
-            if (submenu) submenu.classList.toggle("open");
-        };
-    });
+        // Highlight Active Link
+        const currentPath = window.location.pathname;
+        document.querySelectorAll(".submenu a").forEach(link => {
+            if (currentPath.endsWith(link.getAttribute("href"))) {
+                link.classList.add("active");
+                link.parentElement.classList.add("open");
+            }
+        });
+
+    } catch (err) {
+        console.error("Sidebar Load Error:", err);
+    }
 }
 
 function initSidebarToggle() {
     const btn = document.getElementById("menu-toggle");
-    const sidebar = document.getElementById("sidebar");
-    const main = document.querySelector(".main");
+    if (!btn) return;
 
-    if (btn && sidebar && main) {
-        btn.onclick = () => {
+    btn.onclick = () => {
+        const sidebar = document.getElementById("sidebar");
+        const main = document.querySelector(".main");
+        if (sidebar && main) {
             sidebar.classList.toggle("closed");
             main.classList.toggle("expanded");
-        };
-    }
+        }
+    };
 }
 
 // ===============================
-// RESOURCE PAGE LOGIC
+// 3. RESOURCE DATABASE LOGIC
 // ===============================
 async function loadResources() {
     const grid = document.getElementById('resource-grid');
@@ -56,8 +69,7 @@ async function loadResources() {
 
     try {
         const response = await fetch(`${BASE}/articles.json`);
-        if (!response.ok) throw new Error(`JSON fetch failed`);
-
+        if (!response.ok) throw new Error("articles.json not found");
         const articles = await response.json();
       
         grid.innerHTML = articles.map(item => `
@@ -67,15 +79,17 @@ async function loadResources() {
                 <div class="card-image">
                     <img src="${BASE}/images/icons/${item.icon || 'default-icon.png'}" 
                          class="card-icon" 
-                         onerror="this.src='${BASE}/images/icons/default-icon.png'; this.onerror=null;">
+                         onerror="this.src='${BASE}/images/icons/default-icon.png';">
                 </div>
 
                 <h3>${item.title}</h3>
 
                 <div class="media-links">
                     <a href="${item.articleUrl}" target="_blank" class="media-btn article">View Article</a>
-                    ${item.podcastUrl !== '#' ? `<button class="media-btn podcast" onclick="togglePlayer('audio-${item.id}')">Listen</button>` : ''}
-                    ${item.videoUrl !== '#' ? `<a href="${item.videoUrl}" target="_blank" class="media-btn video">Watch</a>` : ''}
+                    ${item.podcastUrl && item.podcastUrl !== '#' ? 
+                        `<button class="media-btn podcast" onclick="togglePlayer('audio-${item.id}')">Listen to Podcast</button>` : ''}
+                    ${item.videoUrl && item.videoUrl !== '#' ? 
+                        `<a href="${item.videoUrl}" target="_blank" class="media-btn video">Watch Video</a>` : ''}
                 </div>
 
                 <div id="audio-${item.id}" class="player-container" style="display:none; margin-top:15px;">
@@ -84,12 +98,16 @@ async function loadResources() {
             </div>
         `).join('');
         
+        console.log("Resources loaded successfully!");
     } catch (err) {
-        console.error("Resource Load Error:", err);
+        console.error("Resource Error:", err);
+        grid.innerHTML = `<div style="color:red; padding:20px;"><h3>Database Error</h3><p>${err.message}</p></div>`;
     }
 }
 
-// Search Filter
+// ===============================
+// 4. SEARCH & MEDIA HELPERS
+// ===============================
 function filterResources() {
     const input = document.getElementById('resourceSearch').value.toLowerCase();
     const cards = document.getElementsByClassName('media-card');
@@ -107,18 +125,35 @@ function filterResources() {
     }
 }
 
-// Podcast Toggle
 function togglePlayer(id) {
     const player = document.getElementById(id);
     if (player) {
-        player.style.display = (player.style.display === 'none' || player.style.display === '') ? 'block' : 'none';
+        const isHidden = player.style.display === 'none' || player.style.display === '';
+        // Close other players
+        document.querySelectorAll('.player-container').forEach(p => p.style.display = 'none');
+        // Open this one
+        player.style.display = isHidden ? 'block' : 'none';
     }
 }
 
 // ===============================
-// STARTUP
+// 5. RESPONSIVE LOGIC
 // ===============================
-document.addEventListener("DOMContentLoaded", () => {
-    loadSidebar();
-    loadResources();
-});
+function initResponsive() {
+    const checkWidth = () => {
+        const sidebar = document.getElementById("sidebar");
+        const main = document.querySelector(".main");
+        if (!sidebar || !main) return;
+
+        if (window.innerWidth <= 768) {
+            sidebar.classList.add("closed");
+            main.classList.add("expanded");
+        } else {
+            sidebar.classList.remove("closed");
+            main.classList.remove("expanded");
+        }
+    };
+    
+    window.addEventListener("resize", checkWidth);
+    checkWidth(); // Run on load
+}
