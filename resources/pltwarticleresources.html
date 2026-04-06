@@ -29,12 +29,12 @@
     border-top: 4px solid #8b0000; /* Dark Red Top Border */
     border-radius: 12px;
     padding: 24px;
-    padding-top: 85px; /* Extra space for the floating circular icon */
+    padding-top: 90px; /* Space for the floating circle */
     position: relative; 
     display: flex;
     flex-direction: column;
     transition: transform 0.2s, box-shadow 0.2s, border-top-color 0.2s;
-    min-height: 300px;
+    min-height: 320px;
 }
 
 .media-card:hover {
@@ -48,27 +48,31 @@
     position: absolute;
     top: 20px;
     left: 20px;
-    z-index: 5;
-}
-
-/* The Icon: Small, Circular, and Bordered */
-.card-icon {
-    width: 55px;
-    height: 55px;
-    object-fit: cover; /* Prevents squishing */
-    border-radius: 50%; /* Makes it a perfect circle */
-    border: 2px solid #8b0000; /* Dark Red frame */
+    width: 60px; /* Fixed width */
+    height: 60px; /* Fixed height */
     background: #1a1a1a;
-    padding: 2px;
+    border: 2px solid #8b0000;
+    border-radius: 50%; /* Makes the CONTAINER a circle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Clips anything outside the circle */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     transition: border-color 0.2s;
 }
 
-.media-card:hover .card-icon {
-    border-color: #d4af37; /* Icon border turns gold on card hover */
+/* The Icon: Shrunk to fit inside the circle */
+.card-icon {
+    width: 70%; /* Shrinks image to 70% of the circle size */
+    height: 70%;
+    object-fit: contain; /* Ensures the whole image is visible, no stretching */
 }
 
-/* The "Section Highlight" - Small gold text above the title */
+.media-card:hover .card-image {
+    border-color: #d4af37; /* Circle border turns gold on hover */
+}
+
+/* Category Label */
 .category-label {
     color: #d4af37;
     font-family: 'Inter', sans-serif;
@@ -79,7 +83,6 @@
     position: absolute;
     top: 25px;
     right: 20px;
-    text-align: right;
 }
 
 /* Title matching your .card h3 */
@@ -91,7 +94,7 @@
     line-height: 1.3;
 }
 
-/* Buttons styled like your index links (.card a) */
+/* Buttons */
 .media-links {
     margin-top: auto; 
     display: flex;
@@ -113,14 +116,12 @@
     transition: 0.2s;
 }
 
-/* Hover effects matching your index links */
 .media-btn:hover { 
     background: #8b0000; 
     color: white; 
     border-color: #8b0000;
 }
 
-/* Subtle accent borders for different media */
 .media-btn.podcast { border-left: 3px solid #d4af37; }
 .media-btn.video   { border-left: 3px solid #ff4d4d; }
 
