@@ -20,98 +20,91 @@
     padding: 20px 0;
 }
 
-/* Glassmorphism Card Style - Matching your Index Tabs */
+/* Updated Resource Card - Exact match to your .card style */
 .media-card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.03); /* Very subtle white tint */
-    backdrop-filter: blur(12px); /* Frosted glass effect */
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-left: 6px solid #ff4d4d; /* Thick highlight border */
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid #2a2a2a;
+    border-top: 4px solid #8b0000; /* Dark Red Top Border */
     border-radius: 12px;
-    padding: 45px 25px 25px 25px;
+    padding: 24px;
+    position: relative;
     display: flex;
     flex-direction: column;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    min-height: 240px;
-    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s, border-top-color 0.2s;
+    min-height: 280px;
 }
 
-/* Hover Effect: Slide and Glow */
 .media-card:hover {
-    background: rgba(255, 255, 255, 0.07);
-    transform: translateX(8px); /* Slide right like the index menu */
-    border-color: rgba(255, 255, 255, 0.2);
-    border-left-color: #ff8080; 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(139, 0, 0, 0.3);
+    border-top-color: #d4af37; /* Turns Gold on hover */
 }
 
-/* Category Label - Pinned Top Right */
+/* The "Section Highlight" - Small gold text above the title */
 .category-label {
-    position: absolute;
-    top: 12px;
-    right: 15px; /* Moved to right to avoid clashing with the red border */
-    color: #ff4d4d;
-    font-size: 0.6rem;
-    font-weight: 800;
+    color: #d4af37;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.2px;
-    background: rgba(255, 77, 77, 0.12);
-    padding: 3px 10px;
-    border-radius: 20px; /* Pill shape */
+    letter-spacing: 1px;
+    margin-bottom: 8px;
 }
 
-/* Icon Area - Aligned Left like Index Tabs */
+/* Icon Area */
 .card-image {
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: flex-start;
+    margin-bottom: 15px;
 }
 
 .card-icon {
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
     object-fit: contain;
-    filter: drop-shadow(0 0 8px rgba(255, 77, 77, 0.2));
+    /* Optional: subtle brightness to pop against dark background */
+    filter: brightness(1.2);
 }
 
-/* Typography */
-.media-card h3 {
-    color: #fff;
+/* Title matching your .card h3 */
+.media-card h3 { 
+    color: #d4af37; 
+    margin-top: 0; 
     font-family: 'Space Grotesk', sans-serif;
     font-size: 1.2rem;
-    margin: 5px 0 20px 0;
-    line-height: 1.4;
-    font-weight: 600;
 }
 
-/* Button Container */
+/* Buttons styled like your index links (.card a) */
 .media-links {
+    margin-top: auto; /* Forces buttons to bottom */
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: auto; /* Keeps buttons at the bottom */
+    flex-direction: column;
+    gap: 8px;
 }
 
-/* Button Styling */
 .media-btn {
-    font-size: 0.75rem;
-    padding: 8px 14px;
-    border-radius: 6px;
+    display: block;
+    padding: 12px;
     text-decoration: none;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    border: 1px solid rgba(255,255,255,0.1);
+    color: #ddd;
+    background: #1a1a1a;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid transparent;
+    transition: 0.2s;
 }
 
-.media-btn.article { background: rgba(255,255,255,0.05); color: #eee; }
-.media-btn.podcast { background: #d4af37; color: #111; border: none; cursor: pointer; }
-.media-btn.video   { background: #ff4d4d; color: #fff; border: none; }
-
-.media-btn:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
+/* Hover effects matching your index links */
+.media-btn:hover { 
+    background: #8b0000; 
+    color: white; 
 }
+
+/* Specific styling for media types to distinguish them slightly */
+.media-btn.podcast { border-color: rgba(212, 175, 55, 0.3); }
+.media-btn.video   { border-color: rgba(139, 0, 0, 0.5); }
     </style>
 </head>
 <body>
