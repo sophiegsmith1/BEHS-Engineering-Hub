@@ -4,7 +4,7 @@
 const BASE = "/BEHS-Engineering-Hub";
 
 // ===============================
-// LOAD SIDEBAR
+// SIDEBAR INITIALIZATION
 // ===============================
 async function loadSidebar() {
     const container = document.getElementById("sidebar-container");
@@ -12,67 +12,43 @@ async function loadSidebar() {
 
     try {
         const res = await fetch(`${BASE}/components/sidebar.html`);
-        if (!res.ok) throw new Error(`Sidebar failed: ${res.status}`);
+        if (!res.ok) throw new Error(`Sidebar fetch failed: ${res.status}`);
 
         const html = await res.text();
         container.innerHTML = html;
 
-        initSidebar();
-        initToggle();
-        initResponsive(); 
+        // Re-attach listeners once HTML is injected
+        initSidebarAccordion();
+        initSidebarToggle();
     } catch (err) {
-        console.error(err);
-        container.innerHTML = "<p style='color:red;'>Sidebar failed to load</p>";
+        console.error("Sidebar Error:", err);
     }
 }
 
-function initSidebar() {
+function initSidebarAccordion() {
     document.querySelectorAll(".menu-title").forEach(title => {
-        title.addEventListener("click", () => {
+        title.onclick = () => {
             const submenu = title.nextElementSibling;
             if (submenu) submenu.classList.toggle("open");
-        });
+        };
     });
 }
 
-function initToggle() {
+function initSidebarToggle() {
     const btn = document.getElementById("menu-toggle");
-    if (!btn) return;
+    const sidebar = document.getElementById("sidebar");
+    const main = document.querySelector(".main");
 
-    btn.addEventListener("click", () => {
-        const sidebar = document.getElementById("sidebar");
-        const main = document.querySelector(".main");
-        if (sidebar && main) {
+    if (btn && sidebar && main) {
+        btn.onclick = () => {
             sidebar.classList.toggle("closed");
             main.classList.toggle("expanded");
-        }
-    });
-}
-
-// ===============================
-// RESOURCE SEARCH FILTER
-// ===============================
-function filterResources() {
-    let input = document.getElementById('resourceSearch').value.toLowerCase();
-    let cards = document.getElementsByClassName('media-card');
-    
-    for (let card of cards) {
-        let title = card.querySelector('h3').innerText.toLowerCase();
-        let tags = card.getAttribute('data-tags').toLowerCase();
-        
-        let categoryElement = card.querySelector('.category-label');
-        let category = categoryElement ? categoryElement.innerText.toLowerCase() : "";
-        
-        if (title.includes(input) || tags.includes(input) || category.includes(input)) {
-            card.style.display = "";
-        } else {
-            card.style.display = "none";
-        }
+        };
     }
 }
 
 // ===============================
-// LOAD RESOURCES
+// RESOURCE PAGE LOGIC
 // ===============================
 async function loadResources() {
     const grid = document.getElementById('resource-grid');
@@ -80,7 +56,7 @@ async function loadResources() {
 
     try {
         const response = await fetch(`${BASE}/articles.json`);
-        if (!response.ok) throw new Error(`Status: ${response.status}`);
+        if (!response.ok) throw new Error(`JSON fetch failed`);
 
         const articles = await response.json();
       
@@ -91,7 +67,7 @@ async function loadResources() {
                 <div class="card-image">
                     <img src="${BASE}/images/icons/${item.icon || 'default-icon.png'}" 
                          class="card-icon" 
-                         onerror="this.src='${BASE}/images/icons/default-icon.png';">
+                         onerror="this.src='${BASE}/images/icons/default-icon.png'; this.onerror=null;">
                 </div>
 
                 <h3>${item.title}</h3>
@@ -101,32 +77,47 @@ async function loadResources() {
                     ${item.podcastUrl !== '#' ? `<button class="media-btn podcast" onclick="togglePlayer('audio-${item.id}')">Listen</button>` : ''}
                     ${item.videoUrl !== '#' ? `<a href="${item.videoUrl}" target="_blank" class="media-btn video">Watch</a>` : ''}
                 </div>
+
+                <div id="audio-${item.id}" class="player-container" style="display:none; margin-top:15px;">
+                    <audio controls style="width:100%"><source src="${item.podcastUrl}" type="audio/mpeg"></audio>
+                </div>
             </div>
         `).join('');
         
     } catch (err) {
-        console.error("Resource error:", err);
+        console.error("Resource Load Error:", err);
     }
 }
 
-// ===============================
-// GLOBAL HELPERS
-// ===============================
+// Search Filter
+function filterResources() {
+    const input = document.getElementById('resourceSearch').value.toLowerCase();
+    const cards = document.getElementsByClassName('media-card');
+    
+    for (let card of cards) {
+        const title = card.querySelector('h3').innerText.toLowerCase();
+        const tags = card.getAttribute('data-tags').toLowerCase();
+        const category = card.querySelector('.category-label').innerText.toLowerCase();
+        
+        if (title.includes(input) || tags.includes(input) || category.includes(input)) {
+            card.style.display = "";
+        } else {
+            card.style.display = "none";
+        }
+    }
+}
+
+// Podcast Toggle
 function togglePlayer(id) {
     const player = document.getElementById(id);
-    if (player) player.style.display = player.style.display === 'none' ? 'block' : 'none';
-}
-
-function initResponsive() {
-    const sidebar = document.getElementById("sidebar");
-    const main = document.querySelector(".main");
-    if (sidebar && main && window.innerWidth <= 768) {
-        sidebar.classList.add("closed");
-        main.classList.add("expanded");
+    if (player) {
+        player.style.display = (player.style.display === 'none' || player.style.display === '') ? 'block' : 'none';
     }
 }
 
-// Start everything
+// ===============================
+// STARTUP
+// ===============================
 document.addEventListener("DOMContentLoaded", () => {
     loadSidebar();
     loadResources();
