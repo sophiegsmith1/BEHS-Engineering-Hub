@@ -149,17 +149,20 @@ function togglePlayer(id) {
     player.classList.toggle('show');
 }
 
-//search filter
-
+// ===============================
+// SEARCH FILTER (FIXED)
+// ===============================
 function filterResources() {
     let input = document.getElementById('resourceSearch').value.toLowerCase();
     let cards = document.getElementsByClassName('media-card');
     
     for (let card of cards) {
-        // This gets the title, the category, and the tags we added to the JSON
         let title = card.querySelector('h3').innerText.toLowerCase();
         let tags = card.getAttribute('data-tags').toLowerCase();
-        let category = card.querySelector('.card-image span').innerText.toLowerCase();
+        
+        // Fix: Look for .category-label instead of .card-image span
+        let categoryElement = card.querySelector('.category-label');
+        let category = categoryElement ? categoryElement.innerText.toLowerCase() : "";
         
         if (title.includes(input) || tags.includes(input) || category.includes(input)) {
             card.style.display = "";
@@ -169,20 +172,58 @@ function filterResources() {
     }
 }
 
+// ===============================
+// LOAD RESOURCES (FIXED)
+// ===============================
 async function loadResources() {
     const grid = document.getElementById('resource-grid');
-    if (!grid) return; // Only run on the resources page
+    if (!grid) return;
 
     try {
-        // Using the BASE variable for consistency
         const response = await fetch(`${BASE}/articles.json`);
-        
-        if (!response.ok) {
-            throw new Error(`Could not find articles.json (Status: ${response.status})`);
-        }
+        if (!response.ok) throw new Error(`Could not find articles.json (Status: ${response.status})`);
 
         const articles = await response.json();
       
+        grid.innerHTML = articles.map(item => {
+            // Create the full path to the icon
+            const iconPath = `${BASE}/images/icons/${item.icon || 'default-icon.png'}`;
+            
+            return `
+                <div class="media-card" data-tags="${item.tags || ''}">
+                    <div class="category-label">${item.category || ''}</div>
+                    
+                    <div class="card-image">
+                        <img src="${iconPath}" 
+                             class="card-icon" 
+                             alt="icon"
+                             onerror="this.src='${BASE}/images/icons/default-icon.png'; this.onerror=null;">
+                    </div>
+
+                    <h3>${item.title}</h3>
+
+                    <div class="media-links">
+                        <a href="${item.articleUrl}" target="_blank" class="media-btn article">View Article</a>
+                        ${item.podcastUrl !== '#' ? `<button class="media-btn podcast" onclick="togglePlayer('audio-${item.id}')">Listen</button>` : ''}
+                        ${item.videoUrl !== '#' ? `<a href="${item.videoUrl}" target="_blank" class="media-btn video">Watch</a>` : ''}
+                    </div>
+
+                    <div id="audio-${item.id}" class="player-container" style="display:none; margin-top:10px;">
+                        <audio controls style="width:100%"><source src="${item.podcastUrl}" type="audio/mpeg"></audio>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        console.log("Resources loaded successfully!");
+    } catch (err) {
+        console.error("Failed to load resources:", err);
+        grid.innerHTML = `<div style="color:red; padding:20px;">
+            <h3>Database Load Error</h3>
+            <p>${err.message}</p>
+        </div>`;
+    }
+}
 grid.innerHTML = articles.map(item => `
     <div class="media-card" data-tags="${item.tags || ''}">
         <div class="category-label">${item.category}</div>
