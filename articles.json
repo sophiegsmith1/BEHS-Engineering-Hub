@@ -36,20 +36,20 @@
     "videoUrl": "#"
   },
     {
-    "id": "brainstorming-solutions",
-    "title": "Brainstorming Solutions",
+    "id": "experimental-design",
+    "title": "Experimental Design",
     "category": "Problem Solving & Critical Thinking",
-    "icon": "brainstorming-solutions.png",
-    "articleUrl": "https://instructional-resources.pltw.org/PLTW_High_School/General_Student_Resources/Exports/Brainstorming_Solutions/index.html#/lessons/i1_yq0cCEoUsSdlYHCQFmupVVpiQtaHv",
+    "icon": "exp-design.png",
+    "articleUrl": "https://instructional-resources.pltw.org/PLTW_High_School/General_Student_Resources/Exports/ENG_Experimental_Design/index.html#/lessons/9opIW0OpDvJFp0LP5HFQEWNpDBXFTjg3",
     "podcastUrl": "#",
     "videoUrl": "#"
   },
     {
-    "id": "brainstorming-solutions",
-    "title": "Brainstorming Solutions",
+    "id": "metacognition",
+    "title": "Metacognition",
     "category": "Problem Solving & Critical Thinking",
-    "icon": "brainstorming-solutions.png",
-    "articleUrl": "https://instructional-resources.pltw.org/PLTW_High_School/General_Student_Resources/Exports/Brainstorming_Solutions/index.html#/lessons/i1_yq0cCEoUsSdlYHCQFmupVVpiQtaHv",
+    "icon": "metacognition.png",
+    "articleUrl": "https://instructional-resources.pltw.org/PLTW_High_School/General_Student_Resources/Exports/Metacognition/index.html#/lessons/zPjj3CNLYFq4rXhbRH6GRpk_jg9m3cGL",
     "podcastUrl": "#",
     "videoUrl": "#"
   }
