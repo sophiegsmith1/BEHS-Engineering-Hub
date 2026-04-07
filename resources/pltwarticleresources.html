@@ -26,15 +26,15 @@
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid #2a2a2a;
-    border-top: 4px solid #8b0000; /* Dark Red Top Border */
+    border-top: 4px solid #8b0000;
     border-radius: 12px;
-    padding: 24px;
-    padding-top: 90px; /* Space for the floating circle */
-    position: relative; 
+    padding: 20px;
+    padding-top: 85px;
+    position: relative;
     display: flex;
     flex-direction: column;
-    transition: transform 0.2s, box-shadow 0.2s, border-top-color 0.2s;
-    min-height: 320px;
+    min-height: 220px; 
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .media-card:hover {
@@ -46,19 +46,19 @@
 /* Floating Circular Icon Container */
 .card-image {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 60px; /* Fixed width */
-    height: 60px; /* Fixed height */
+    top: 15px;
+    left: 15px;
+    width: 55px;
+    height: 55px;
     background: #1a1a1a;
     border: 2px solid #8b0000;
-    border-radius: 50%; /* Makes the CONTAINER a circle */
+    border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Clips anything outside the circle */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: border-color 0.2s;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    z-index: 10;
 }
 
 /* The Icon: Shrunk to fit inside the circle */
@@ -76,21 +76,23 @@
 .category-label {
     color: #d4af37;
     font-family: 'Inter', sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.65rem; /* Slightly smaller to fit better */
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1px;
     position: absolute;
-    top: 25px;
-    right: 20px;
+    top: 20px;
+    right: 20px; /* Moved to the right */
+    text-align: right;
+    max-width: 180px; /* Prevents long titles from hitting the icon */
 }
 
 /* Title matching your .card h3 */
-.media-card h3 { 
-    color: #d4af37; 
-    margin: 10px 0 20px 0; 
+.media-card h3 {
+    color: #d4af37;
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.15rem;
+    margin: 5px 0 15px 0;
     line-height: 1.3;
 }
 
