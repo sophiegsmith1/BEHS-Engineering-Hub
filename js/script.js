@@ -157,3 +157,29 @@ function initResponsive() {
     window.addEventListener("resize", checkWidth);
     checkWidth(); // Run on load
 }
+
+// ===============================
+// COURSE HUB: LESSON TOGGLE
+// ===============================
+function toggleLessons(id) {
+    const list = document.getElementById(id);
+    const btn = list ? list.previousElementSibling : null;
+
+    if (!list || !btn) return;
+
+    // Check if it's already open
+    const isOpen = list.classList.contains("show");
+
+    // Close all other open activity lists (Optional: Accordion style)
+    // document.querySelectorAll('.activity-list').forEach(el => el.classList.remove('show'));
+    // document.querySelectorAll('.lesson-btn').forEach(el => el.classList.remove('active'));
+
+    // Toggle this specific list
+    if (isOpen) {
+        list.classList.remove("show");
+        btn.classList.remove("active");
+    } else {
+        list.classList.add("show");
+        btn.classList.add("active");
+    }
+}
